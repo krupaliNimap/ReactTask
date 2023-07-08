@@ -1,0 +1,20 @@
+.navbar{
+    background-color: #41999c;
+    display: flex;
+    justify-content: space-between;
+}
+.image{
+    height: 100px;
+    width: 100px;
+    margin: 20px;
+}
+.button{
+    height: 50px;
+    width: 100px;
+    border-radius: 50px;
+    background-color: #a2c4c9;
+    margin:50px
+}
+.hidden {
+    display: none;
+  }
