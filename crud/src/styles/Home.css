@@ -1,4 +1,18 @@
 .table{
     border: 1px solid black;
-    margin: auto;
+    margin: 40px auto;
+}
+th,td,.table{
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 7px;
+}
+th{
+    background: #41999c;
+}
+.update-btn{
+    background-color: rgb(57, 57, 235);
+}
+.delete-btn{
+    background-color: red;
 }

@@ -1,36 +1,42 @@
 .close-btn{
-    background: red;
     position: absolute;
-    right: 0rem;
-    top: 0;
-    height: 20px;
-    width:20px;
+    top: 10px;
+    right: 10px;
+    background: #f3f6f4;
+    border: #ded7d7;
+
 }
 .modal{
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 0.4rem;
-    width: 450px;
-    padding: 1.3rem;
-    min-height: 250px;
-    position: absolute;
-    z-index: 2;
-    top: 20%;
-    left: calc(50% - 225px);
-    background-color: #ebc8c8;
     border: 1px solid black;
-    border-radius: 15px;
+    border-radius: 3px;
+    width: 600px;
+    left: calc(50% - 300px);
+    height: 500px;
+    top:calc(50% - 250px);
+    /* z-index: 2; */
+    position: absolute;
+    background: #75867a;   
 }
-.overlay {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(3px);
-    z-index: 1;
-  }
+.modal-bg{
+    background-color: rgba(0,0,0,0.8);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sub-details{
+    margin:25px;
+    font-weight: bold;
+    font-size: larger;
+}

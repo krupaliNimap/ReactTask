@@ -1,8 +1,7 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../components/home/Home";
 import Navbar from "../components/navbar/Navbar";
-import DetailsForm from "../components/form/DetailsForm";
+import ApiCrud from "../components/apiCrud/ApiCrud";
 
 const PrivateRouting = createBrowserRouter([
   {
@@ -11,13 +10,7 @@ const PrivateRouting = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
-        // children: [
-        //   {
-        //     path: "/detailsform",
-        //     element: <DetailsForm />,
-        //   },
-        // ],
+        element: <ApiCrud />,
       },
     ],
   },
