@@ -1,0 +1,88 @@
+{
+  "users": [
+    {
+      "id": 3582347,
+      "name": "Menaka Sethi",
+      "email": "menaka_sethi@farrell.example",
+      "gender": "female",
+      "status": "active"
+    },
+    {
+      "id": 3582345,
+      "name": "Shreya Sharma",
+      "email": "shreya_sharma@schamberger.test",
+      "gender": "female",
+      "status": "active"
+    },
+    {
+      "id": 3582339,
+      "name": "Amrit Sharma",
+      "email": "amrit_sharma@pfeffer.test",
+      "gender": "female",
+      "status": "inactive"
+    },
+    {
+      "id": 3582338,
+      "name": "Balaaditya Dutta MD",
+      "email": "md_balaaditya_dutta@jacobs.test",
+      "gender": "female",
+      "status": "inactive"
+    },
+    {
+      "id": 3582337,
+      "name": "Akshita Gill",
+      "email": "gill_akshita@mitchell.test",
+      "gender": "male",
+      "status": "active"
+    },
+    {
+      "id": 3582359,
+      "name": "Shinchan",
+      "email": "shin@abc.com",
+      "gender": "Male",
+      "status": "Active"
+    },
+    {
+      "name": "Shashi Saini ",
+      "email": "shashi_saini_do@johnson.test",
+      "gender": "Male",
+      "status": "Active",
+      "id": 3582361
+    },
+    {
+      "name": "Mrs. Rati ",
+      "email": "rati_mrs_desai@nikolaus.test",
+      "gender": "female",
+      "status": "inactive",
+      "id": 3582363
+    },
+    {
+      "name": "Shashi Saini ",
+      "email": "shashi_saini_do@johnson.test",
+      "gender": "Male",
+      "status": "Active",
+      "id": 3582365
+    },
+    {
+      "name": "Balaaditya Dutta MD@@@@@@",
+      "email": "md_balaaditya_dutta@jacobs.test",
+      "gender": "female",
+      "status": "inactive",
+      "id": 3582368
+    },
+    {
+      "name": "Amrit Sharmaji",
+      "email": "amrit_sharma@pfeffer.test",
+      "gender": "female",
+      "status": "inactive",
+      "id": 3582369
+    },
+    {
+      "name": "Chaten",
+      "email": "marar_chaten@mckenzie.test",
+      "gender": "female",
+      "status": "active",
+      "id": 3582370
+    }
+  ]
+}
