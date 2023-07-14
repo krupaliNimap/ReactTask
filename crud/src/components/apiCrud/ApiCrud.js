@@ -4,7 +4,7 @@ import Home from "../home/Home";
 function ApiCrud() {
   const [user, setUser] = useState([]);
   useEffect(() => {
-    fetch("https://gorest.co.in/public/v2/users")
+    fetch("http://localhost:8000/user")
       .then((response) => response.json())
       .then((json) => {
         // console.log("json :>> ", json);

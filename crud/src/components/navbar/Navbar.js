@@ -27,8 +27,12 @@ function Navbar() {
           </button>
         </div>
       </div>
-      <Modal isModalOpen={isModalOpen} handleClose={handleClose} />
-      <Outlet />
+      <Modal
+        isModalOpen={isModalOpen}
+        handleClose={handleClose}
+        handleOpen={handleOpen}
+      />
+      <Outlet context={[isModalOpen, handleClose, handleOpen]} />
     </>
   );
 }

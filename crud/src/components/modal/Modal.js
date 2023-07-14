@@ -1,20 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/Modal.css";
-function Modal({ isModalOpen, handleClose }) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [gender, setGender] = useState("");
-  const [status, setStatus] = useState("");
+function Modal({ isModalOpen, handleClose, data }) {
+  const [name, setName] = useState(data ? data.name : "");
+  const [email, setEmail] = useState(data ? data.email : "");
+  const [gender, setGender] = useState(data ? data.gender : "");
+  const [status, setStatus] = useState(data ? data.status : "");
+
+  console.log("data :>> ", data, name, email, gender);
   const addUser = (e) => {
     e.preventDefault();
     const addName = name.trim();
-    console.log("addName :>> ", addName);
     const addEmail = email.trim();
-    console.log("addEmail :>> ", addEmail);
     const addGender = gender.trim();
-    console.log("addGender :>> ", addGender);
     const addStatus = status.trim();
-    console.log("addStatus :>> ", addStatus);
 
     if (addName && addEmail && addGender && addStatus) {
       const payload = {
@@ -23,13 +21,15 @@ function Modal({ isModalOpen, handleClose }) {
         gender: addGender,
         status: addStatus,
       };
+      console.log("payload :>> ", payload);
 
-      fetch("https://gorest.co.in/public/v2/users", {
+      fetch("http://localhost:8000/user", {
         method: "POST",
         body: JSON.stringify(payload),
         headers: {
-          Authorization:
-            "Bearer 18a3279201423034b60a718f43ea6592db5e934ef43e88e9ff8c3bfe40056a4c",
+          "Content-Type": "application/json",
+          // Authorization:
+          //   "Bearer 18a3279201423034b60a718f43ea6592db5e934ef43e88e9ff8c3bfe40056a4c",
         },
       })
         .then((response) => response.json)
@@ -38,9 +38,18 @@ function Modal({ isModalOpen, handleClose }) {
           setEmail("");
           setGender("");
           setStatus("");
+          handleClose();
         });
     }
   };
+
+  useEffect(() => {
+    setName(data?.name);
+    setEmail(data?.email);
+    setGender(data?.gender);
+    setStatus(data?.status);
+  }, [data]);
+
   if (isModalOpen === true) {
     return (
       <div className="modal-bg">
@@ -58,19 +67,35 @@ function Modal({ isModalOpen, handleClose }) {
           <form onSubmit={addUser} className="details">
             <label className="sub-details">
               Name :
-              <input type="text" onChange={(e) => setName(e.target.value)} />
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
             </label>
             <label className="sub-details">
-              Email Id :{" "}
-              <input type="text" onChange={(e) => setEmail(e.target.value)} />
+              Email Id :
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </label>
             <label className="sub-details">
-              Gender :{" "}
-              <input type="text" onChange={(e) => setGender(e.target.value)} />
+              Gender :
+              <input
+                type="text"
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+              />
             </label>
             <label className="sub-details">
-              Status :{" "}
-              <input type="text" onChange={(e) => setStatus(e.target.value)} />
+              Status :
+              <input
+                type="text"
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+              />
             </label>
             <button type="submit">Submit</button>
           </form>

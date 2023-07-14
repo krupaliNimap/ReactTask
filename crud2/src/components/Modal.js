@@ -19,7 +19,7 @@ function Modal({
     <div className="modal">
       <div>
         <button className="close-btn" onClick={handleClose}>
-          Close
+          <img src={require("../assets/img1.png")} height="25px" alt="close" />
         </button>
       </div>
       <form onSubmit={edit ? editUser : addUser} className="details">

@@ -1,0 +1,144 @@
+{
+  "user": [
+    {
+      "id": 3582411,
+      "name": "Manik Chopra IV",
+      "email": "manik_chopra_iv@goyette.test",
+      "gender": "male",
+      "status": "active"
+    },
+    {
+      "id": 3582410,
+      "name": "Veda Rana",
+      "email": "veda_rana@vonrueden.example",
+      "gender": "male",
+      "status": "active"
+    },
+    {
+      "id": 3582409,
+      "name": "Sen. Devasree Mehrotra",
+      "email": "sen_devasree_mehrotra@olson-metz.example",
+      "gender": "male",
+      "status": "active"
+    },
+    {
+      "id": 3582408,
+      "name": "Gov. Kartik Patil",
+      "email": "gov_kartik_patil@fahey-rutherford.example",
+      "gender": "female",
+      "status": "active"
+    },
+    {
+      "id": 3582407,
+      "name": "Girika Jha",
+      "email": "jha_girika@kirlin-welch.test",
+      "gender": "male",
+      "status": "active"
+    },
+    {
+      "id": 3582406,
+      "name": "Bhagvan Abbott",
+      "email": "bhagvan_abbott@mertz.test",
+      "gender": "female",
+      "status": "active"
+    },
+    {
+      "id": 3582405,
+      "name": "Parvati Varrier",
+      "email": "varrier_parvati@gleason.test",
+      "gender": "female",
+      "status": "active"
+    },
+    {
+      "id": 3582404,
+      "name": "Dandak Bhat DO",
+      "email": "dandak_do_bhat@kreiger.test",
+      "gender": "male",
+      "status": "active"
+    },
+    {
+      "id": 3582403,
+      "name": "Dr. Bhaaswar Sethi",
+      "email": "dr_bhaaswar_sethi@boyer.example",
+      "gender": "female",
+      "status": "inactive"
+    },
+    {
+      "id": 3582402,
+      "name": "Chaitan Tagore",
+      "email": "chaitan_tagore@kozey.test",
+      "gender": "female",
+      "status": "active"
+    },
+    {
+      "name": "krupali",
+      "email": "krupali@abc.com",
+      "gender": "female",
+      "status": "active",
+      "id": 3582412
+    },
+    {
+      "name": "jiohio",
+      "email": "jopjop",
+      "gender": "jjojoj",
+      "status": "nklkl",
+      "id": 3582413
+    },
+    {
+      "name": "jiosjoi",
+      "email": "joiejo",
+      "gender": "jojop",
+      "status": "jojop",
+      "id": 3582414
+    },
+    {
+      "name": "Manik Chopra IV",
+      "email": "manik_chopra_iv@goyette.test",
+      "gender": "male",
+      "status": "active",
+      "id": 3582415
+    },
+    {
+      "name": "bjkbk",
+      "email": "klkknkl",
+      "gender": "nklnkl",
+      "status": "klnklnl",
+      "id": 3582416
+    },
+    {
+      "name": "nklnklsn",
+      "email": "nkldnkl",
+      "gender": "ndlk",
+      "status": "mekllk",
+      "id": 3582417
+    },
+    {
+      "name": "Sen. Devasree Mehrotra",
+      "email": "sen_devasree_mehrotra@olson-metz.example",
+      "gender": "male",
+      "status": "active",
+      "id": 3582418
+    },
+    {
+      "name": "Sen. Devasree Mehrotra",
+      "email": "sen_devasree_mehrotra@olson-metz.example",
+      "gender": "male",
+      "status": "active",
+      "id": 3582419
+    },
+    {
+      "name": "jsaksjaks",
+      "email": "jdsdksdjskd@gmail.com",
+      "gender": "male",
+      "status": "active",
+      "id": 3582420
+    },
+    {
+      "name": "sdfvddfvdvfvdvfg",
+      "email": "xmklcmk",
+      "gender": "m sdn",
+      "status": "nsdkln",
+      "id": 3582421
+    }
+  ]
+}

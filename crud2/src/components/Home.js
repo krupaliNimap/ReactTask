@@ -5,7 +5,7 @@ function Home({ fetchUser, allUsers, openEdit, deleteUser }) {
   useEffect(() => fetchUser(), []);
   return (
     <div>
-      <table>
+      <table className="table">
         <thead>
           <tr>
             <th>Id</th>
@@ -25,8 +25,18 @@ function Home({ fetchUser, allUsers, openEdit, deleteUser }) {
               <td>{data.gender}</td>
               <td>{data.status}</td>
               <td>
-                <button onClick={(e) => openEdit(e, data)}>Edit</button>
-                <button onClick={(e) => deleteUser(e, data)}>Delete</button>
+                <button
+                  className="update-btn"
+                  onClick={(e) => openEdit(e, data)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="delete-btn"
+                  onClick={(e) => deleteUser(e, data)}
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
