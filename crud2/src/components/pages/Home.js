@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "../Modal";
+import "../../styles/Home.css";
+import { Link } from "react-router-dom";
 
 function Home() {
   const initial = {
@@ -81,12 +83,15 @@ function Home() {
         fetchUser();
       });
   };
+  useEffect(() => fetchUser(), []);
 
   return (
-    <div>
-      <button className="button" onClick={handleOpen}>
-        Modal
-      </button>
+    <div className="homeBody">
+      <div>
+        <button className="button" onClick={handleOpen}>
+          Add User
+        </button>
+      </div>
       <div>
         <table className="table">
           <thead>

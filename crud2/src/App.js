@@ -1,13 +1,14 @@
 import "./App.css";
 import { RouterProvider } from "react-router-dom";
 import PrivateRouting from "./shared/PrivateRouting";
-import Home from "./components/pages/Home";
+import { Suspense } from "react";
 
 function App() {
   return (
     <div>
-      {/* <RouterProvider router={PrivateRouting} /> */}
-      <Home />
+      <Suspense fallback={<div>Loading...</div>}>
+        <RouterProvider router={PrivateRouting} />
+      </Suspense>
     </div>
   );
 }

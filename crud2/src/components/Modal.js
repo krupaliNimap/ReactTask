@@ -16,65 +16,86 @@ function Modal({
   };
 
   return (
-    <div className="modal">
-      <div>
-        <button className="close-btn" onClick={handleClose}>
-          <img src={require("../assets/img1.png")} height="25px" alt="close" />
-        </button>
+    <div className="modal-bg">
+      <div className="modal">
+        <div className="sub-modal1">
+          <button className="close-btn" onClick={handleClose}>
+            {/* <img src={require("../assets/img1.png")} height="25px" alt="close" /> */}
+            X
+          </button>
+        </div>
+        <div className="sub-modal2">
+          <form onSubmit={edit ? editUser : addUser} className="details">
+            <label className="sub-details">
+              Name
+              <div>
+                <input
+                  className="input"
+                  required
+                  value={user.name}
+                  onChange={(e) => handleChange(e, "name")}
+                ></input>
+              </div>
+            </label>
+            <label className="sub-details">
+              Email
+              <div>
+                <input
+                  className="input"
+                  required
+                  value={user.email}
+                  onChange={(e) => handleChange(e, "email")}
+                ></input>
+              </div>
+            </label>
+            <label className="sub-details">
+              Gender
+              <div>
+                <input
+                  className="radio"
+                  type="radio"
+                  value="Male"
+                  name="gender"
+                  onChange={(e) => handleChange(e, "gender")}
+                />
+                Male
+                <input
+                  className="radio"
+                  type="radio"
+                  value="Female"
+                  name="gender"
+                  onChange={(e) => handleChange(e, "gender")}
+                />
+                Female
+              </div>
+            </label>
+            <label className="sub-details ">
+              Status
+              <div>
+                <input
+                  className="radio"
+                  type="radio"
+                  value="Active"
+                  name="status"
+                  onChange={(e) => handleChange(e, "status")}
+                />
+                Active
+                <input
+                  className="radio"
+                  type="radio"
+                  value="Inactive"
+                  name="status"
+                  onChange={(e) => handleChange(e, "status")}
+                />
+                Inactive
+              </div>
+            </label>
+            <button className="submit-btn" type="submit">
+              {edit ? "Edit" : "Add"}
+            </button>
+          </form>
+        </div>
       </div>
-      <form onSubmit={edit ? editUser : addUser} className="details">
-        <label className="sub-details">
-          Name :
-          <input
-            required
-            value={user.name}
-            onChange={(e) => handleChange(e, "name")}
-          ></input>
-        </label>
-        <label className="sub-details">
-          Email :
-          <input
-            required
-            value={user.email}
-            onChange={(e) => handleChange(e, "email")}
-          ></input>
-        </label>
-        <label className="sub-details">
-          Gender :
-          <input
-            type="radio"
-            value="Male"
-            name="gender"
-            onChange={(e) => handleChange(e, "gender")}
-          />
-          Male
-          <input
-            type="radio"
-            value="Female"
-            name="gender"
-            onChange={(e) => handleChange(e, "gender")}
-          />
-          Female
-        </label>
-        <label className="sub-details">
-          Status :
-          <input
-            type="radio"
-            value="Active"
-            name="status"
-            onChange={(e) => handleChange(e, "status")}
-          />
-          Active
-          <input
-            type="radio"
-            value="Inactive"
-            name="status"
-            onChange={(e) => handleChange(e, "status")}
-          />
-          Inactive
-        </label>
-        <button type="submit">{edit ? "Edit" : "Add"}</button>
-      </form>
     </div>
   );
 }

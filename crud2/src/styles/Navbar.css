@@ -1,4 +1,8 @@
 .navbar{
+    /* position: fixed;
+    width: 100%;
+    top:0;
+    overflow: hidden; */
     background-color: #41999c;
     display: flex;
     justify-content: space-between;
@@ -15,12 +19,8 @@
 .sub-navbar1{
     padding: 10px;
 }
-.button{
-    height: 50px;
-    width: 100px;
-    border-radius: 50px;
-    background-color: #a2c4c9;
-    margin:15px
+.sub-navbar1:hover{
+    background-color: #227376; 
 }
 .hidden {
     display: none;

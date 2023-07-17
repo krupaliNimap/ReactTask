@@ -2,10 +2,10 @@
   "users": [
     {
       "id": 3582347,
-      "name": "Menaka Sethi",
+      "name": "Menaka",
       "email": "menaka_sethi@farrell.example",
-      "gender": "female",
-      "status": "active"
+      "gender": "Female",
+      "status": "Active"
     },
     {
       "id": 3582345,

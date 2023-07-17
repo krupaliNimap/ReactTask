@@ -1,6 +1,18 @@
+.homeBody{
+}
+
 .table{
     border: 1px solid black;
-    margin: 40px auto;
+}
+.button{
+    height: 40px;
+    width: 100px;
+    border-radius: 15px;
+    background-color: #a2c4c9;
+    cursor:pointer;
+}
+.button:hover{
+    background-color: #227376;
 }
 th,td,.table{
     border: 1px solid black;
@@ -11,8 +23,10 @@ th{
     background: #41999c;
 }
 .update-btn{
+    cursor:pointer;
     background-color: rgb(57, 57, 235);
 }
 .delete-btn{
+    cursor:pointer;
     background-color: red;
 }

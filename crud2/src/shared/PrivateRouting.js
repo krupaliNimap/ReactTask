@@ -1,9 +1,10 @@
-import React from "react";
+import React, { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import Contact from "../components/pages/Contact";
-import Details from "../components/pages/Details";
-import Home from "../components/pages/Home";
+
+const Home = lazy(() => import("../components/pages/Home"));
+const Details = lazy(() => import("../components/pages/Details"));
+const Navbar = lazy(() => import("../components/Navbar"));
+const Contact = lazy(() => import("../components/pages/Contact"));
 
 const PrivateRouting = createBrowserRouter([
   {

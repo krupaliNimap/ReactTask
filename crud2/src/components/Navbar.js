@@ -2,25 +2,8 @@ import React from "react";
 import "../styles/Navbar.css";
 import { Link, Outlet } from "react-router-dom";
 import "../styles/Navbar.css";
-import useShare from "../shared/Shared";
-import Modal from "./Modal";
-import Home from "./Home";
 
 function Navbar() {
-  const {
-    isModalOpen,
-    handleOpen,
-    handleClose,
-    addUser,
-    setUser,
-    user,
-    fetchUser,
-    allUsers,
-    editUser,
-    openEdit,
-    deleteUser,
-    edit,
-  } = useShare();
   return (
     <div>
       <div>
@@ -32,36 +15,17 @@ function Navbar() {
             />
           </div>
           <div className="sub-navbar">
+            <Link className="sub-navbar1" to="/">
+              Home
+            </Link>
             <Link className="sub-navbar1" to="/contact">
               Contact
             </Link>
             <Link className="sub-navbar1" to="/details">
               Details
             </Link>
-
-            {/* {props?.component} */}
-            {/* 
-            <button className="button" onClick={handleOpen}>
-              Modal
-            </button> */}
           </div>
         </div>
-        <Home
-          fetchUser={fetchUser}
-          allUsers={allUsers}
-          openEdit={openEdit}
-          deleteUser={deleteUser}
-        />
-        {isModalOpen && (
-          <Modal
-            handleClose={handleClose}
-            addUser={addUser}
-            setUser={setUser}
-            user={user}
-            edit={edit}
-            editUser={editUser}
-          />
-        )}
         <Outlet />
       </div>
     </div>
