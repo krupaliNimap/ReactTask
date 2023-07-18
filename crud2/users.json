@@ -8,13 +8,6 @@
       "status": "Active"
     },
     {
-      "id": 3582345,
-      "name": "Shreya Sharma",
-      "email": "shreya_sharma@schamberger.test",
-      "gender": "female",
-      "status": "active"
-    },
-    {
       "id": 3582339,
       "name": "Amrit Sharma",
       "email": "amrit_sharma@pfeffer.test",
@@ -78,11 +71,11 @@
       "id": 3582369
     },
     {
+      "id": 3582370,
       "name": "Chaten",
       "email": "marar_chaten@mckenzie.test",
       "gender": "female",
-      "status": "active",
-      "id": 3582370
+      "status": "Inactive"
     }
   ]
 }

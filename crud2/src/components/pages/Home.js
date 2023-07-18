@@ -87,12 +87,12 @@ function Home() {
 
   return (
     <div className="homeBody">
-      <div>
+      <div className="add-button">
         <button className="button" onClick={handleOpen}>
           Add User
         </button>
       </div>
-      <div>
+      <div className="table-div">
         <table className="table">
           <thead>
             <tr>

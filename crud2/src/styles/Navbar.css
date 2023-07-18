@@ -1,8 +1,7 @@
 .navbar{
-    /* position: fixed;
+    position: sticky;
     width: 100%;
-    top:0;
-    overflow: hidden; */
+    top: 0;
     background-color: #41999c;
     display: flex;
     justify-content: space-between;

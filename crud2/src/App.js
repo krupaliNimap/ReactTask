@@ -5,11 +5,11 @@ import { Suspense } from "react";
 
 function App() {
   return (
-    <div>
-      <Suspense fallback={<div>Loading...</div>}>
-        <RouterProvider router={PrivateRouting} />
-      </Suspense>
-    </div>
+    // <div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <RouterProvider router={PrivateRouting} />
+    </Suspense>
+    // </div>
   );
 }
 

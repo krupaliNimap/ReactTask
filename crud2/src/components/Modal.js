@@ -56,10 +56,12 @@ function Modal({
                   type="radio"
                   value="Male"
                   name="gender"
+                  required={true}
                   onChange={(e) => handleChange(e, "gender")}
                 />
                 Male
                 <input
+                  required={true}
                   className="radio"
                   type="radio"
                   value="Female"
@@ -73,6 +75,7 @@ function Modal({
               Status
               <div>
                 <input
+                  required="true"
                   className="radio"
                   type="radio"
                   value="Active"
@@ -81,6 +84,7 @@ function Modal({
                 />
                 Active
                 <input
+                  required="true"
                   className="radio"
                   type="radio"
                   value="Inactive"
