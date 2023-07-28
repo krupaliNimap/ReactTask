@@ -57,11 +57,11 @@
       "id": 3582365
     },
     {
-      "name": "Balaaditya Dutta MD@@@@@@",
+      "id": 3582368,
+      "name": "Balaaditya Dutta MD",
       "email": "md_balaaditya_dutta@jacobs.test",
-      "gender": "female",
-      "status": "inactive",
-      "id": 3582368
+      "gender": "Male",
+      "status": "Inactive"
     },
     {
       "name": "Amrit Sharmaji",

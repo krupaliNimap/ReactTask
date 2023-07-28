@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
-import "../styles/Navbar.css";
 import { Link, Outlet } from "react-router-dom";
-import "../styles/Navbar.css";
+import "../../styles/Navbar.css";
 
 function Navbar() {
   return (
