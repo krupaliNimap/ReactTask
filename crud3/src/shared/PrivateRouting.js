@@ -1,7 +1,12 @@
 import React from "react";
+import { createBrowserRouter } from "react-router-dom";
+import SideNav from "./SideNav";
 
-const PrivateRouting = () => {
-  return <div>PrivateRouting</div>;
-};
+const privateRouting = createBrowserRouter([
+  {
+    path: "/",
+    element: <SideNav />,
+  },
+]);
 
-export default PrivateRouting;
+export default privateRouting;
