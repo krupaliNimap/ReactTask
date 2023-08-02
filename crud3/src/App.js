@@ -1,12 +1,10 @@
-import React, { Suspense } from "react";
-import Layout from "./shared/Layout";
+import { RouterProvider } from "react-router-dom";
+import PrivateRouting from "./shared/PrivateRouting";
 
 const App = () => {
   return (
     <div>
-      <Suspense fallback="Loading...">
-        <Layout />
-      </Suspense>
+      <RouterProvider router={PrivateRouting} />
     </div>
   );
 };
