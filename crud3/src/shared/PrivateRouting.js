@@ -1,7 +1,7 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import SideNav from "./SideNav";
-import Home from "../components/Home";
+import Home from "../components/home/Home";
 import About from "../components/About";
 
 const PrivateRouting = createBrowserRouter([

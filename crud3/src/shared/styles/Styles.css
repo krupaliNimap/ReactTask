@@ -45,9 +45,10 @@
 .home-container{
     margin: 20px;
 }
-.div-add-user-button
-{display: flex;
-justify-content: end;}
+.div-add-user-button{
+    display: flex;
+    justify-content: end;
+}
 .add-user-button{
     background-color: gray;
     color:white;
@@ -64,6 +65,6 @@ justify-content: end;}
 }
 
 .modal-container{
-    overflow: hidden;
-    background-color: white ;
+    width: 50%;
+    height: auto;
 }
