@@ -1,7 +1,12 @@
 import React from "react";
+import { Form } from "react-router-dom";
 
 const UserForm = () => {
-  return <div>UserForm</div>;
+  return (
+    <>
+      <Form></Form>
+    </>
+  );
 };
 
 export default UserForm;

@@ -7,7 +7,6 @@ import Spinner from "../../shared/Spinner";
 import Modal from "react-responsive-modal";
 
 const Home = () => {
-  console.log(" :>> ");
   const [allData, setAllData] = useState([]);
   const [spinnerState, setSpinnerState] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -45,7 +44,6 @@ const Home = () => {
         setSpinnerState(false);
       })
       .catch((err) => {
-        console.log(err);
         setSpinnerState(false);
       });
   };
@@ -73,7 +71,6 @@ const Home = () => {
           className="Hello"
         />
       </div>
-      {console.log("modalOpen :>> ", modalOpen)}
       {modalOpen && (
         <Modal open={modalOpen} onClose={handleModalClose} center>
           <h2>Hello</h2>

@@ -18,6 +18,9 @@ const Sidebar = () => {
           <Link to="/about" className="sidebar-subcontent">
             About
           </Link>
+          <Link to="/task" className="sidebar-subcontent">
+            Tasks
+          </Link>
         </div>
       </div>
     </Fragment>
