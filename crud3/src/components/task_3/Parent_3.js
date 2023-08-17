@@ -4,7 +4,7 @@ const Parent3 = () => {
   const list = [
     {
       client_id: 11,
-      client_name: "Network 18",
+      client_name: "Network 18",
       credit_experience: "",
       resource_count: 24,
       year: 2022,
@@ -14,7 +14,7 @@ const Parent3 = () => {
     },
     {
       client_id: 411,
-      client_name: "Niveus Solutions Pvt Ltd",
+      client_name: "Niveus Solutions Pvt Ltd",
       credit_experience: "",
       resource_count: 22,
       year: 2023,
@@ -24,7 +24,7 @@ const Parent3 = () => {
     },
     {
       client_id: 732,
-      client_name: "iorta technologyyy",
+      client_name: "iorta technologyyy",
       credit_experience: "green",
       resource_count: 12,
       year: 2023,
@@ -54,7 +54,7 @@ const Parent3 = () => {
     },
     {
       client_id: 126,
-      client_name: "Augmont Goldtech Pvt. Ltd.",
+      client_name: "Augmont Goldtech Pvt. Ltd.",
       credit_experience: "",
       resource_count: 7,
       year: 2022,
@@ -74,7 +74,7 @@ const Parent3 = () => {
     },
     {
       client_id: 726,
-      client_name: "Soft Tech",
+      client_name: "Soft Tech",
       credit_experience: "green",
       resource_count: 1,
       year: 2023,
@@ -84,7 +84,7 @@ const Parent3 = () => {
     },
     {
       client_id: 682,
-      client_name: "Ravi CEO",
+      client_name: "Ravi CEO",
       credit_experience: "orange",
       resource_count: 1,
       year: 2023,
@@ -123,6 +123,7 @@ const Parent3 = () => {
   }, {});
   //   console.log("Object.keys(anotherList)", Object.keys(anotherList));
   //   console.log(Object.keys(anotherList).length);
+  let quarters = [];
   for (let i = 0; i <= Object.keys(anotherList).length - 1; i++) {
     for (let j = 0; i < 4; i++) {
       if (Object.values(anotherList)[i][j].quarter == i) {
