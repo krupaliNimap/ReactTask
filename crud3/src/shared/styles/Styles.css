@@ -58,6 +58,11 @@
     margin: 10px;
 }
 
+/* Home Page Add/Edit Form Styles */
+.form-required{
+    color: red;
+}
+
 /* Spinner Styles */
 .spinner{
     width:200px;

@@ -5,6 +5,7 @@ import "../../shared/styles/Styles.css";
 import "react-responsive-modal/styles.css";
 import Spinner from "../../shared/Spinner";
 import Modal from "react-responsive-modal";
+import UserForm from "./UserForm";
 
 const Home = () => {
   const [allData, setAllData] = useState([]);
@@ -72,10 +73,7 @@ const Home = () => {
         />
       </div>
       {modalOpen && (
-        <Modal open={modalOpen} onClose={handleModalClose} center>
-          <h2>Hello</h2>
-          <form> </form>
-        </Modal>
+        <UserForm modalOpen={modalOpen} handleModalClose={handleModalClose} />
       )}
     </>
   );
