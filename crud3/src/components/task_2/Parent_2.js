@@ -53,13 +53,13 @@ const Parent2 = () => {
   // };
   return (
     <div>
-      <div>
-        <input
-          type="number"
-          onChange={(e) => setNumber(e.target.value)}
-        ></input>
-        <button onClick={isCubeOf}>Enter</button>
-      </div>
+      <p>
+        Description: Find the cube-root of the number. <br />
+        If the number has no cube-root then output the nearest cuberoot of that
+        number.
+      </p>
+      <input type="number" onChange={(e) => setNumber(e.target.value)}></input>
+      <button onClick={isCubeOf}>Enter</button>
       <div>{answer}</div>
     </div>
   );

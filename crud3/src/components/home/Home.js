@@ -4,7 +4,6 @@ import DataTable from "react-data-table-component";
 import "../../shared/styles/Styles.css";
 import "react-responsive-modal/styles.css";
 import Spinner from "../../shared/Spinner";
-import Modal from "react-responsive-modal";
 import UserForm from "./UserForm";
 
 const Home = () => {
@@ -22,7 +21,9 @@ const Home = () => {
   const columns = [
     {
       name: "NAME",
-      selector: (row) => row?.name,
+      selector: (row) => (
+        <span onClick={() => console.log("nameClicked")}>{row?.name}</span>
+      ),
     },
     {
       name: "EMAIL",
@@ -41,11 +42,13 @@ const Home = () => {
       selector: "null",
       cell: (row) => [
         <img
+          alt="Update"
           onClick={() => deleteUser(row.id)}
           className="delete-update-button"
           src={require("../../assets/images/DeleteLogo.png")}
         ></img>,
         <img
+          alt="Delete"
           className="delete-update-button"
           src={require("../../assets/images/EditLogo.png")}
           onClick={() => handleModalOpen(row)}
@@ -68,7 +71,6 @@ const Home = () => {
   };
 
   const addUser = (data) => {
-    // console.log("data", data.email);
     console.log(
       "alldata",
       allData.filter((item) => item.email === data.email)
@@ -146,10 +148,10 @@ const Home = () => {
           responsive
           progressPending={spinnerState}
           progressComponent={<Spinner />}
-          // className="user-table"
           columns={columns}
+          pagination="true"
           data={allData}
-          className="Hello"
+          onRowClicked={() => console.log("RowClicked")}
         />
       </div>
       {modalOpen && (

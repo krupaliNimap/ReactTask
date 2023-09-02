@@ -22,9 +22,6 @@ function Child1({ data, setData }) {
             ...prev.technical.frontend.js.stack.push("html"),
           },
         }));
-
-        // setData(data, data.technical.frontend.js.stack.push("html"));
-        // console.log("dataupdated :>> ", data);
         break;
 
       case "companyName":
@@ -32,9 +29,6 @@ function Child1({ data, setData }) {
           ...prev,
           company: [...prev.company, { name: "capegemini" }],
         }));
-
-        // setData(data, data.company.push({ name: "capegemini" }));
-        // console.log("dataupdated :>> ", data);
         break;
 
       default:
@@ -42,19 +36,32 @@ function Child1({ data, setData }) {
     }
   };
 
-  // useEffect(() => {
-  //   alert("data :>> ", data), [data];
-  // });
-
   return (
     <>
       <div>
+        <p>
+          (Open console to get the output of this task.)
+          <div>
+            Description:{" "}
+            <li>
+              If "Name" is clicked, output returns the data object with added
+              middle name in the name key.
+            </li>
+            <li>
+              If "Technial" is clicked, output returns the data object with
+              added stack in js in frontend in the technical key.
+            </li>
+            <li>
+              If "company" is clicked, output returns the data object with added
+              object in the company key.
+            </li>
+          </div>
+        </p>
         <button onClick={(e) => handleClick(e, "addName")}>Name</button>
         <button onClick={(e) => handleClick(e, "addTechnology")}>
           Technical
         </button>
         <button onClick={(e) => handleClick(e, "companyName")}>Company</button>
-        {/* <div>{data}</div> */}
       </div>
     </>
   );

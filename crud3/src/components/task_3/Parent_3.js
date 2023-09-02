@@ -113,6 +113,7 @@ const Parent3 = () => {
       tds_submited: 0,
     },
   ];
+  console.log("list", list);
   const anotherList = list.reduce((acc, curr) => {
     if (acc[curr.client_name]) {
       acc[curr.client_name].push(curr);
@@ -121,25 +122,30 @@ const Parent3 = () => {
     }
     return acc;
   }, {});
-  //   console.log("Object.keys(anotherList)", Object.keys(anotherList));
-  //   console.log(Object.keys(anotherList).length);
-  let quarters = [];
+  // let quarters = [];
   for (let i = 0; i <= Object.keys(anotherList).length - 1; i++) {
     for (let j = 0; i < 4; i++) {
-      if (Object.values(anotherList)[i][j].quarter == i) {
+      if (Object.values(anotherList)[i][j].quarter === i) {
         continue;
       } else {
-        console.log(
-          "Object.values(anotherList)[i][j].quarter",
-          Object.values(anotherList)[i][j].quarter
-        );
         Object.entries(anotherList)[i].push({ quarter: j + 1 });
       }
     }
   }
 
   console.log("anotherList", anotherList);
-  return <div></div>;
+  return (
+    <div>
+      <p>
+        (Open console to get the output of this task.)
+        <div>
+          Description: Created object with keys as the client_name and values as
+          the list of number of that client_name. <br />
+          Here,"list" is the actual list and anotherList is the updated list
+        </div>
+      </p>
+    </div>
+  );
 };
 
 export default Parent3;
