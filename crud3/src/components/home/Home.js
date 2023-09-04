@@ -5,6 +5,7 @@ import "../../shared/styles/Styles.css";
 import "react-responsive-modal/styles.css";
 import Spinner from "../../shared/Spinner";
 import UserForm from "./UserForm";
+import Pagination from "../../shared/Pagination";
 
 const Home = () => {
   const [allData, setAllData] = useState([]);
@@ -21,9 +22,7 @@ const Home = () => {
   const columns = [
     {
       name: "NAME",
-      selector: (row) => (
-        <span onClick={() => console.log("nameClicked")}>{row?.name}</span>
-      ),
+      selector: (row) => row?.name,
     },
     {
       name: "EMAIL",
@@ -71,10 +70,6 @@ const Home = () => {
   };
 
   const addUser = (data) => {
-    console.log(
-      "alldata",
-      allData.filter((item) => item.email === data.email)
-    );
     if (!allData.filter((item) => item.email === data.email).length) {
       axios
         .post("http://localhost:8000/user", data)
@@ -92,7 +87,6 @@ const Home = () => {
   };
 
   const updateUser = (id, email, data) => {
-    // console.log("id", id, "email", email, "data", data);
     if (
       !allData.filter(
         (item) => (item.email === data.email) & (email !== item.email)
@@ -102,21 +96,12 @@ const Home = () => {
         .put(`http://localhost:8000/user/${id}`, data)
         .then((response) => {
           setAllData(response.data);
-          console.log("update response", response);
           getAllUserList();
         })
         .catch((err) => alert(err));
     } else {
       alert("Email already exist");
     }
-    // axios
-    //   .put(`http://localhost:8000/user/${id}`, data)
-    //   .then((response) => {
-    //     setAllData(response.data);
-    //     console.log("update response", response);
-    //     getAllUserList();
-    //   })
-    //   .catch((err) => alert(err));
     setModalOpen(false);
     setSelectedData();
   };
@@ -125,11 +110,27 @@ const Home = () => {
     axios
       .delete(`http://localhost:8000/user/${id}`)
       .then((response) => {
-        console.log("update response", response);
         getAllUserList();
       })
       .catch(() => alert("Something went wrong"));
   };
+
+  //pagination
+  const [currPage, setCurrPage] = useState(1);
+  const [perPage, setPerPage] = useState(5);
+  const pageCount = Math.ceil(allData && allData?.length / perPage);
+  const startIndex = perPage * currPage - perPage;
+  const endIndex = perPage * currPage;
+  const paginateData = allData.slice(startIndex, endIndex);
+  console.log(
+    "pageCount, perPage,  currPage, startIndex, endIndex, paginateData",
+    pageCount,
+    perPage,
+    currPage,
+    startIndex,
+    endIndex,
+    paginateData
+  );
 
   useEffect(() => getAllUserList(), []);
 
@@ -143,15 +144,20 @@ const Home = () => {
       <div className="home-container">
         <DataTable
           fixedHeader
-          fixedHeaderScrollHeight="300px"
+          // fixedHeaderScrollHeight="300px"
           highlightOnHover
           responsive
           progressPending={spinnerState}
           progressComponent={<Spinner />}
           columns={columns}
-          pagination="true"
-          data={allData}
-          onRowClicked={() => console.log("RowClicked")}
+          data={paginateData}
+        />
+        <Pagination
+          count={pageCount}
+          perPage={perPage}
+          setPerPage={setPerPage}
+          currPage={currPage}
+          setCurrPage={setCurrPage}
         />
       </div>
       {modalOpen && (
