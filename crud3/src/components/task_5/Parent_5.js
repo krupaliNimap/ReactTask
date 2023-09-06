@@ -5,17 +5,14 @@ const Parent5 = () => {
   const [num, setNum] = useState();
   let arr = [32, 9, 76, 87, 3, 91, 79, 23, 9, 91, 1, 31];
   let arr1 = arr;
-  console.log("arr", arr);
   let largest = (num) => {
     let max = 0;
     for (let j = 1; j <= num; j++) {
-      console.log("j", j);
       max = 0;
       for (let i = 0; i <= arr.length; i++) {
         if (arr[i] > max) max = arr[i];
       }
       arr = arr.filter((element) => element !== max);
-      console.log("max", max);
     }
     return max;
   };

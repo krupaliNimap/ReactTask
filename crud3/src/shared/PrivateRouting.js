@@ -9,6 +9,7 @@ import Parent2 from "../components/task_2/Parent_2";
 import Parent3 from "../components/task_3/Parent_3";
 import Parent4 from "../components/task_4/Parent_4";
 import Parent5 from "../components/task_5/Parent_5";
+import Parent6 from "./../components/task_6/Parent_6";
 
 const PrivateRouting = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const PrivateRouting = createBrowserRouter([
           {
             path: `/task/5`,
             element: <Parent5 />,
+          },
+          {
+            path: `/task/6`,
+            element: <Parent6 />,
           },
         ],
       },

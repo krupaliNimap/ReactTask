@@ -6,6 +6,8 @@ import "react-responsive-modal/styles.css";
 import Spinner from "../../shared/Spinner";
 import UserForm from "./UserForm";
 import Pagination from "../../shared/Pagination";
+import { Tooltip } from "@mui/material";
+import PieChart from "./PieChart";
 
 const Home = () => {
   const [allData, setAllData] = useState([]);
@@ -21,12 +23,20 @@ const Home = () => {
   };
   const columns = [
     {
+      name: "ID",
+      selector: (row) => row?.id,
+    },
+    {
       name: "NAME",
       selector: (row) => row?.name,
     },
     {
       name: "EMAIL",
-      selector: (row) => row?.email,
+      selector: (row) => (
+        <Tooltip title={<div className="tooltip">{row?.email}</div>}>
+          <span>{row?.email}</span>
+        </Tooltip>
+      ),
     },
     {
       name: "GENDER",
@@ -37,7 +47,7 @@ const Home = () => {
       selector: (row) => row?.status,
     },
     {
-      name: "Action",
+      name: "ACTION",
       selector: "null",
       cell: (row) => [
         <img
@@ -74,7 +84,7 @@ const Home = () => {
       axios
         .post("http://localhost:8000/user", data)
         .then((response) => {
-          setAllData(response.data);
+          // setAllData(response.data);
           getAllUserList();
         })
         .catch((err) => {
@@ -95,7 +105,7 @@ const Home = () => {
       axios
         .put(`http://localhost:8000/user/${id}`, data)
         .then((response) => {
-          setAllData(response.data);
+          // setAllData(response.data);
           getAllUserList();
         })
         .catch((err) => alert(err));
@@ -121,16 +131,7 @@ const Home = () => {
   const pageCount = Math.ceil(allData && allData?.length / perPage);
   const startIndex = perPage * currPage - perPage;
   const endIndex = perPage * currPage;
-  const paginateData = allData.slice(startIndex, endIndex);
-  console.log(
-    "pageCount, perPage,  currPage, startIndex, endIndex, paginateData",
-    pageCount,
-    perPage,
-    currPage,
-    startIndex,
-    endIndex,
-    paginateData
-  );
+  const paginateData = allData?.slice(startIndex, endIndex);
 
   useEffect(() => getAllUserList(), []);
 
@@ -141,7 +142,7 @@ const Home = () => {
           Add
         </button>
       </div>
-      <div className="home-container">
+      <div className="table-container">
         <DataTable
           fixedHeader
           // fixedHeaderScrollHeight="300px"
@@ -151,14 +152,26 @@ const Home = () => {
           progressComponent={<Spinner />}
           columns={columns}
           data={paginateData}
+          onRowClicked={(details) => {
+            console.log("e", details);
+          }}
         />
-        <Pagination
-          count={pageCount}
-          perPage={perPage}
-          setPerPage={setPerPage}
-          currPage={currPage}
-          setCurrPage={setCurrPage}
-        />
+        {console.log("allData", allData)}
+        {allData?.length ? (
+          <Pagination
+            count={pageCount}
+            perPage={perPage}
+            setPerPage={setPerPage}
+            currPage={currPage}
+            setCurrPage={setCurrPage}
+            startIndex={startIndex}
+            endIndex={endIndex}
+            data={allData}
+          />
+        ) : (
+          ""
+        )}
+        <PieChart data={allData} />
       </div>
       {modalOpen && (
         <UserForm

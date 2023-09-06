@@ -42,7 +42,9 @@
 }
 
 /* Home Page Styles */
-.home-container{
+.table-container{
+    display: flex;
+    flex-direction: column;
     margin: 20px;
 }
 .div-add-user-button{
@@ -67,6 +69,16 @@
 .div-delete-update-button{
     align-self: center;
     margin: 20px 0;
+}
+
+/* Tooltip */
+.tooltip{
+    color: #000;
+}
+
+/* Piechart */
+.piechart-container{
+    margin-top: 100px;
 }
 
 /* Home Page Add/Edit Form Styles */
@@ -108,12 +120,35 @@
     cursor: pointer;
 }
 
+/* Pagination Styles */
+.pagination-container{
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+}
+.for-back-button{
+    font-size: medium;
+}
+.pagination-button{
+    border: solid white;
+    background: white;
+    cursor: pointer;
+}
+.current-page-highlight {
+    background-color: #61DAFB;
+    color: #000;
+    border-radius: 50%;
+    font-weight: bolder;
+}
+.user-numbers{
+    color:gray;
+}
+
 /* Spinner Styles */
 .spinner{
     width:200px;
     color:#61DAFB;
 }
-
 .modal-container{
     width: 50%;
     height: auto;

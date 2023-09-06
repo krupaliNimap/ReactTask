@@ -10,6 +10,7 @@ const Task = () => {
         <Link to="/task/3">Task 3</Link>
         <Link to="/task/4">Task 4</Link>
         <Link to="/task/5">Task 5</Link>
+        <Link to="/task/6">Task6</Link>
         <Outlet />
       </div>
     </>
