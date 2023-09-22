@@ -14,11 +14,21 @@ const Home = () => {
   const [spinnerState, setSpinnerState] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedData, setSelectedData] = useState();
+  const [addState, setAddState] = useState(true);
+  const [delState, setDelState] = useState(false);
   const handleModalOpen = (data) => {
+    if (data) {
+      setAddState(false);
+    }
+    if (+data) {
+      setDelState(true);
+    }
     setSelectedData(data);
     setModalOpen(true);
   };
   const handleModalClose = () => {
+    setAddState(true);
+    setDelState(false);
     setModalOpen(false);
   };
   const columns = [
@@ -52,7 +62,7 @@ const Home = () => {
       cell: (row) => [
         <img
           alt="Update"
-          onClick={() => deleteUser(row.id)}
+          onClick={() => handleModalOpen(row.id)}
           className="delete-update-button"
           src={require("../../assets/images/DeleteLogo.png")}
         ></img>,
@@ -105,7 +115,6 @@ const Home = () => {
       axios
         .put(`http://localhost:8000/user/${id}`, data)
         .then((response) => {
-          // setAllData(response.data);
           getAllUserList();
         })
         .catch((err) => alert(err));
@@ -117,12 +126,15 @@ const Home = () => {
   };
 
   const deleteUser = (id) => {
+    setDelState(true);
+    handleModalOpen(true);
     axios
       .delete(`http://localhost:8000/user/${id}`)
       .then((response) => {
         getAllUserList();
       })
       .catch(() => alert("Something went wrong"));
+    setModalOpen(false);
   };
 
   //pagination
@@ -138,7 +150,7 @@ const Home = () => {
   return (
     <>
       <div className="div-add-user-button">
-        <button onClick={handleModalOpen} className="add-user-button">
+        <button onClick={() => handleModalOpen()} className="add-user-button">
           Add
         </button>
       </div>
@@ -156,7 +168,6 @@ const Home = () => {
             console.log("e", details);
           }}
         />
-        {console.log("allData", allData)}
         {allData?.length ? (
           <Pagination
             count={pageCount}
@@ -180,7 +191,10 @@ const Home = () => {
           setAllData={setAllData}
           addUser={addUser}
           updateUser={updateUser}
+          deleteUser={deleteUser}
           selectedData={selectedData}
+          addState={addState}
+          delState={delState}
         />
       )}
     </>

@@ -8,8 +8,14 @@ const UserForm = ({
   setAllUser,
   addUser,
   updateUser,
+  deleteUser,
   selectedData,
+  addState,
+  delState,
 }) => {
+  console.log("selectedData", selectedData);
+  console.log("addState", addState);
+  console.log("delState", delState);
   const {
     register,
     handleSubmit,
@@ -27,88 +33,110 @@ const UserForm = ({
   };
   return (
     <>
-      <Modal open={modalOpen} onClose={handleModalClose} center>
-        <div className="form-modal-body">
-          <form className="form-body" onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-field">
-              <label className="form-label">Name</label>
-              <input
-                className="form-input"
-                {...register("name", { required: true })}
-              />
-            </div>
-            {errors.name && (
-              <span className="form-required">Name is required</span>
-            )}
-            <div className="form-field">
-              <label className="form-label">Email</label>
-              <input
-                className="form-input"
-                {...register("email", {
-                  required: true,
-                  pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                })}
-              />
-            </div>
-            {errors?.email?.type === "required" && (
-              <span className="form-required">Email is required</span>
-            )}
-            {errors?.email?.type === "pattern" && (
-              <span className="form-required">Enter valid email</span>
-            )}
-            <div className="form-field">
-              <label className="form-label">Gender</label>
-              <label>
-                <input
-                  type="radio"
-                  value="Male"
-                  {...register("gender", { required: true })}
-                />
-                Male
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  value="Female"
-                  {...register("gender", { required: true })}
-                />
-                Female
-              </label>
-            </div>
-            {errors.gender && (
-              <span className="form-required">Gender is required</span>
-            )}
-            <div className="form-field">
-              <label className="form-label">Status</label>
-              <label>
-                <input
-                  type="radio"
-                  value="Active"
-                  {...register("status", { required: true })}
-                />
-                Active
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  value="Inactive"
-                  {...register("status", { required: true })}
-                />
-                Inactive
-              </label>
-            </div>
-            {errors.status && (
-              <span className="form-required">Status is required</span>
-            )}
+      {delState ? (
+        <Modal open={modalOpen} onClose={handleModalClose} center>
+          <div>
+            <div>Are you sure? You wanna delete</div>
             <div className="div-delete-update-button">
-              <input className="submit-button" type="submit" />
+              <button
+                className="submit-button"
+                onClick={() => deleteUser(selectedData)}
+              >
+                Delete
+              </button>
               <button className="submit-button" onClick={handleModalClose}>
                 Cancel
               </button>
             </div>
-          </form>
-        </div>
-      </Modal>
+          </div>
+        </Modal>
+      ) : (
+        <Modal open={modalOpen} onClose={handleModalClose} center>
+          <div className="form-modal-body">
+            <form className="form-body" onSubmit={handleSubmit(onSubmit)}>
+              <div>{addState ? "Add" : "Update"}</div>
+              <div className="form-field">
+                <label className="form-label">Name</label>
+                <input
+                  className="form-input"
+                  {...register("name", { required: true })}
+                />
+              </div>
+              {errors.name && (
+                <span className="form-required">Name is required</span>
+              )}
+              <div className="form-field">
+                <label className="form-label">Email</label>
+                <input
+                  className="form-input"
+                  {...register("email", {
+                    required: true,
+                    pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                  })}
+                />
+              </div>
+              {errors?.email?.type === "required" && (
+                <span className="form-required">Email is required</span>
+              )}
+              {errors?.email?.type === "pattern" && (
+                <span className="form-required">Enter valid email</span>
+              )}
+              <div className="form-field">
+                <label className="form-label">Gender</label>
+                <label>
+                  <input
+                    type="radio"
+                    value="Male"
+                    {...register("gender", { required: true })}
+                  />
+                  Male
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    value="Female"
+                    {...register("gender", { required: true })}
+                  />
+                  Female
+                </label>
+              </div>
+              {errors.gender && (
+                <span className="form-required">Gender is required</span>
+              )}
+              <div className="form-field">
+                <label className="form-label">Status</label>
+                <label>
+                  <input
+                    type="radio"
+                    value="Active"
+                    {...register("status", { required: true })}
+                  />
+                  Active
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    value="Inactive"
+                    {...register("status", { required: true })}
+                  />
+                  Inactive
+                </label>
+              </div>
+              {errors.status && (
+                <span className="form-required">Status is required</span>
+              )}
+              <div className="div-delete-update-button">
+                <button className="submit-button" type="submit">
+                  {addState ? "Add" : "Update"}
+                </button>
+                <button className="submit-button" onClick={handleModalClose}>
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </Modal>
+      )}
     </>
   );
 };

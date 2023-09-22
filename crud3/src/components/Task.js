@@ -1,18 +1,42 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 const Task = () => {
   return (
     <>
       <div className="taskbutton-container">
-        <Link to="/task/1">Task 1</Link>
-        <Link to="/task/2">Task 2</Link>
-        <Link to="/task/3">Task 3</Link>
-        <Link to="/task/4">Task 4</Link>
-        <Link to="/task/5">Task 5</Link>
-        <Link to="/task/6">Task6</Link>
-        <Outlet />
+        <NavLink to="/task/1" className="task-button">
+          Task 1
+        </NavLink>
+        <NavLink to="/task/2" className="task-button">
+          Task 2
+        </NavLink>
+        <NavLink to="/task/3" className="task-button">
+          Task 3
+        </NavLink>
+        <NavLink to="/task/4" className="task-button">
+          Task 4
+        </NavLink>
+        <NavLink to="/task/5" className="task-button">
+          Task 5
+        </NavLink>
+        <NavLink to="/task/6" className="task-button">
+          Task 6
+        </NavLink>
+        <NavLink to="/task/7" className="task-button">
+          Task 7
+        </NavLink>
+        <NavLink to="/task/8" className="task-button">
+          Task 8
+        </NavLink>
+        <NavLink to="/task/9" className="task-button">
+          Task 9
+        </NavLink>
+        <NavLink to="/task/10" className="task-button">
+          Task 10
+        </NavLink>
       </div>
+      <Outlet />
     </>
   );
 };

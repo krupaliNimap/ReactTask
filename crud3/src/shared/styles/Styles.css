@@ -26,10 +26,18 @@
 .sidebar-content{
     display: flex;
     flex-direction: column;
-    font-size: larger;
+    font-size: 25px;    
+    margin-top: 25px;
+
 }
 .sidebar-subcontent{
+    text-decoration: none;
+    text-align: center;
     margin: 8px;
+    color:#053B50;
+}
+.sidebar-subcontent.active{
+    font-weight: bolder;
 }
 .sidebar-subcontent:hover{
     color: #61DAFB;
@@ -152,4 +160,55 @@
 .modal-container{
     width: 50%;
     height: auto;
+}
+
+/* Task Button Styles */
+.taskbutton-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #053B50;
+}
+.task-button{
+    width: 60px;
+    text-align: center;
+    padding: 6px 0;
+    color: white;
+    text-decoration: none;
+}
+.task-button:hover{
+    font-weight: bolder;
+}
+.task-button.active{
+    font-weight: bolder;
+    color:#61DAFB
+}
+
+/* To Do */
+.todo-container{
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    margin: 5px;
+}
+.todo-subcontainer{
+    border: solid black 2px;
+    height: 40px;
+    width: 950px;
+    overflow: hidden; 
+}
+
+/* To do Modal */
+.todo-modal-container{
+    height: 200px;
+    width: 200px;
+    border: solid black 2px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+    overflow: auto;
+}
+.todo-modal-cross-button{
+    align-items: end;
 }

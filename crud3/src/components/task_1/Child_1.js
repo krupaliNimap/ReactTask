@@ -1,7 +1,6 @@
 import React from "react";
 
 function Child1({ data, setData }) {
-  console.log("data :>> ", data);
   const handleClick = (e, key) => {
     switch (key) {
       case "addName":
