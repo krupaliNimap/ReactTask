@@ -1,7 +1,35 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const TodoModal = ({ data, close, newRef, setNewRef, count, setCount }) => {
+const TodoModal = ({
+  data,
+  close,
+  newRef,
+  setNewRef,
+  count,
+  setCount,
+  updateTodo,
+}) => {
   const ref = useRef(null);
+  const [inputData, setInputData] = useState(data);
+  const [isThrottled, setIsThrottled] = useState(false);
+
+  const forzIndex = () => {
+    if (newRef && newRef.current) {
+      newRef.current.children[1].style.zIndex = count + 2;
+    }
+  };
+
+  const handleDataChange = (e) => {
+    setInputData((prev) => ({ ...prev, name: e.target.value }));
+    if (!isThrottled) {
+      setIsThrottled(true);
+      setTimeout(() => {
+        setIsThrottled(false);
+        console.log("inputData", inputData);
+        updateTodo({ ...inputData, name: e.target.value });
+      }, 2000);
+    }
+  };
 
   const dragElement = (ref) => {
     let pos1 = 0,
@@ -11,7 +39,7 @@ const TodoModal = ({ data, close, newRef, setNewRef, count, setCount }) => {
     onmousedown = dragMouse;
 
     function dragMouse(e) {
-      e.preventDefault();
+      // e.preventDefault();
       pos3 = e.clientX;
       pos4 = e.clientY;
       onmouseup = closeDragElement;
@@ -19,7 +47,7 @@ const TodoModal = ({ data, close, newRef, setNewRef, count, setCount }) => {
     }
 
     function elementDrag(e) {
-      e.preventDefault();
+      // e.preventDefault();
       pos1 = pos3 - e.clientX;
       pos2 = pos4 - e.clientY;
       pos3 = e.clientX;
@@ -40,9 +68,9 @@ const TodoModal = ({ data, close, newRef, setNewRef, count, setCount }) => {
     if (newRef && newRef.current) {
       newRef.current.style.zIndex = count + 1;
     }
-  }, [newRef]);
+  }, [newRef, count]);
   return (
-    <>
+    <div>
       <div
         ref={ref}
         className="todo-modal-container"
@@ -52,21 +80,34 @@ const TodoModal = ({ data, close, newRef, setNewRef, count, setCount }) => {
           setCount(count + 1);
         }}
       >
-        <div>
+        <div
+          className="todo-modal-cross-button-div"
+          onClick={() => setNewRef(ref)}
+        >
+          <div value={data.name} />
           <button
             className="todo-modal-cross-button"
             onClick={(e) => {
-              close(data);
+              close(inputData);
               e.stopPropagation();
             }}
           >
             X
           </button>
         </div>
-        {data.name}
-        {data.id}
+        <textarea
+          onClick={() => {
+            setNewRef(ref);
+            forzIndex();
+          }}
+          value={inputData.name}
+          // onChange={(e) =>
+          //   setInputData((prev) => ({ ...prev, name: e.target.value }))
+          // }
+          onChange={handleDataChange}
+        />
       </div>
-    </>
+    </div>
   );
 };
 

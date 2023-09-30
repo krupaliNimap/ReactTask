@@ -1,16 +1,18 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import TodoModal from "./TodoModal";
+import moreIcon from "../../assets/images/more-vertical.svg";
+import deleteIcon from "../../assets/images/DeleteLogo.png";
 
 const Todo = () => {
   const [openTodoModal, setOpenTodoModal] = useState(false);
   const [allTodo, setAllTodo] = useState([]);
   const [newRef, setNewRef] = useState(0);
   const [count, setCount] = useState(1);
+  const [todoMoreId, setTodoMoreId] = useState(null);
 
   const handleTodoModalOpen = (data) => {
     setCount(count + 1);
-    console.log("count", count, newRef);
     setOpenTodoModal(true);
     axios
       .put(`http://localhost:8000/todo/${data.id}`, { ...data, status: true })
@@ -19,9 +21,7 @@ const Todo = () => {
 
   const handleTodoModalClose = (data) => {
     setOpenTodoModal(false);
-    axios
-      .put(`http://localhost:8000/todo/${data.id}`, { ...data, status: false })
-      .then(() => getAllTodo());
+    updateTodo({ ...data, status: false });
   };
 
   const getAllTodo = () => {
@@ -38,6 +38,16 @@ const Todo = () => {
       .catch((err) => alert(err));
   };
 
+  const updateTodo = (data) => {
+    axios
+      .put(`http://localhost:8000/todo/${data.id}`, {
+        ...data,
+        name: data.name,
+      })
+      .then(() => getAllTodo())
+      .catch((err) => alert(err));
+  };
+
   const deleteTodo = (id) => {
     axios
       .delete(`http://localhost:8000/todo/${id}`)
@@ -50,16 +60,45 @@ const Todo = () => {
     if (newRef && newRef.current) {
       newRef.current.style.zIndex = count + 1;
     }
-  }, [newRef]);
+  }, [newRef, count]);
 
   return (
-    <div>
+    <div className="todo-container" onClick={() => setTodoMoreId(null)}>
+      <div
+        className="todo-subcontainer2 todo-subcontainer1"
+        onClick={() => addToDo({ name: " ", status: true })}
+      >
+        +
+      </div>
       {allTodo?.map((item) => (
-        <p className="todo-container">
-          <div
-            className="todo-subcontainer"
-            onClick={() => handleTodoModalOpen(item)}
-          >
+        <div
+          className="todo-subcontainer2"
+          onClick={() => handleTodoModalOpen(item)}
+        >
+          <div className="todo-more-container">
+            <img
+              src={moreIcon}
+              alt="more-icon"
+              onClick={(e) => {
+                e.stopPropagation();
+                setTodoMoreId(item.id);
+              }}
+            />
+            {todoMoreId === item?.id && (
+              <div className="div-delete-update-button">
+                <img
+                  src={deleteIcon}
+                  alt="delete-icon"
+                  className="delete-update-button"
+                  onClick={(e) => {
+                    deleteTodo(item?.id);
+                    e.stopPropagation();
+                  }}
+                />
+              </div>
+            )}
+          </div>
+          <div>
             {item.name}
             {item.status ? (
               <TodoModal
@@ -69,29 +108,26 @@ const Todo = () => {
                 setNewRef={setNewRef}
                 count={count}
                 setCount={setCount}
+                updateTodo={updateTodo}
               />
             ) : (
               ""
             )}
           </div>
-          <button
+          {/* <button
             onClick={(e) => {
               deleteTodo(item.id);
               e.stopPropagation();
             }}
           >
             -
-          </button>
-        </p>
+          </button> */}
+        </div>
       ))}
-      <button
-        onClick={(e) => {
-          addToDo({ name: " " });
-          e.stopPropagation();
-        }}
-      >
-        +
-      </button>
+      {/* {allTodo?.map((item) => {
+        todoMoreId === item?.id;
+        return <div>{item.id}</div>;
+      })} */}
     </div>
   );
 };

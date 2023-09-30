@@ -71,12 +71,17 @@
 .delete-update-button{
     height:15px;
     width:15px;
-    margin-right:5px;
+    padding: 5px 15px;
     cursor: pointer;
 }
 .div-delete-update-button{
-    align-self: center;
-    margin: 20px 0;
+    position: absolute;
+    top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d33939;
+    border-radius: 5px;
 }
 
 /* Tooltip */
@@ -107,7 +112,7 @@
 .form-field{
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 7px;
 }
 .form-label{
     margin: 10px;
@@ -187,28 +192,112 @@
 /* To Do */
 .todo-container{
     display: flex;
-    justify-content: space-between;
-    gap: 5px;
-    margin: 5px;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    /* height: calc(100vh - 70px); */
 }
-.todo-subcontainer{
-    border: solid black 2px;
-    height: 40px;
-    width: 950px;
+.todo-subcontainer1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+.todo-subcontainer2{
+    border: solid #FFBFBF 2px;
+    border-radius: 20px;
+    background-color: #FFE5E5;
+    height: 200px;
+    width: 200px;
     overflow: hidden; 
+    overflow-wrap: anywhere;
+    padding: 5px;
+    /* margin: auto; */
+}
+.todo-more-container{
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
 }
 
 /* To do Modal */
 .todo-modal-container{
-    height: 200px;
-    width: 200px;
-    border: solid black 2px;
     position: absolute;
+    height: 300px;
+    width: 300px;
     top: 0;
     left: 0;
-    background: white;
-    overflow: auto;
+    box-shadow: 0 0 5px #FFE5E5;
+    /* border: #FFBFBF77 2px solid ; */
+    background: #eee2e2;
+    border-radius: 10px;
+    padding: 3px;
+    /* overflow-y: scroll;
+    overflow-x: auto; */
+    z-index:1;
+}
+/* .todo-modal-container {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1;  Initial z-index value 
+} */
+
+.todo-modal-container textarea{
+    width: 296px;
+    height: 274px;
+    overflow-y: auto;
+    overflow-x: unset;
+    border: none;
+    border-radius: 5px;
+}
+.todo-modal-container textarea:focus{
+    outline: none;
+}
+.todo-modal-container textarea::-webkit-scrollbar-track
+{
+	-webkit-box-shadow:  0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+.todo-modal-container textarea::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+.todo-modal-container textarea::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-image: -webkit-gradient(linear,
+									   left bottom,
+									   left top,
+									   color-stop(0.44, #FFE5E5),
+									   color-stop(0.72, #f8aeae),
+									   color-stop(0.86, #FFBFBF));
+}
+
+.todo-modal-cross-button-div{
+    display: flex;
+    justify-content: flex-end;
+    height: 7%;
+    background-color: #FFBFBF;
+    border-radius: 5px;
 }
 .todo-modal-cross-button{
-    align-items: end;
+    border:none;
+    border-radius: 5px;
+
+    background-color: #FFBFBF;
+}
+.modal-id-div{
+    display: none;
+}
+.todo-modal-input{
+    position:absolute;
+    height: 50px;
 }

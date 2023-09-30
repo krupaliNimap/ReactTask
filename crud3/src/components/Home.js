@@ -44,7 +44,7 @@ const Home = () => {
         setSpinnerState(false);
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   };
 
