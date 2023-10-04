@@ -257,12 +257,7 @@
 .todo-modal-container textarea:focus{
     outline: none;
 }
-.todo-modal-container textarea::-webkit-scrollbar-track
-{
-	-webkit-box-shadow:  0 0 6px rgba(0,0,0,0.3);
-	background-color: #F5F5F5;
-	border-radius: 10px;
-}
+
 
 .todo-modal-container textarea::-webkit-scrollbar
 {
@@ -300,4 +295,46 @@
 .todo-modal-input{
     position:absolute;
     height: 50px;
+}
+
+
+
+/*Cakes and ice cream shop*/
+.cake-icecream-shop{
+    display: flex;
+    justify-content: space-around;
+    font-family: ui-rounded;
+}
+.shop-containers{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    border: burlywood solid 1px;
+    border-radius: 10px;
+    box-shadow: 0 0 6px #999;
+    padding: 10px;
+    gap: 5px;
+}
+.shop-containers input{
+    outline: none;
+    border: burlywood solid 1px;
+    border-radius: 5px;
+}
+.hover-container:hover{
+    /* box-shadow: 0 0 #000; */
+    border: #000 solid 1px;
+    border-radius: 10px;
+}
+.shop-title{
+    text-align: center;
+    font-weight: 600;
+    font-size: 22px;
+    color: burlywood;
+}
+.shop-button{
+    background: #FF6969;
+    height: 30px;
+    border-radius: 10px;
+    font-family: ui-rounded;
+    font-size: 16px;
 }

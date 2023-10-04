@@ -1,17 +1,23 @@
-import axios from "axios";
-import React from "react";
-
-const Test = () => {
-  async function abc() {
-    const promise1 = await axios.get("http://localhost:8000/user");
-    console.log("promise1", promise1.data);
-  }
-  abc();
-  // const promise = new Promise((res, rej) => {
-  //   res(promise1);
-  //   rej("");
-  // });
-  // console.log("promise", promise);
-};
-
-export default Test;
+// const redux = require("redux");
+// const createStore = redux.createStore;
+// const BUY_CAKE = "BUY_CAKE";
+// const initialState = {
+//   numOfCakes: 90,
+// };
+// const reducer = (state = initialState, action) => {
+//   switch (action.type) {
+//     case BUY_CAKE:
+//       return {
+//         ...state,
+//         numOfCakes: state.numOfCakes - action.payload,
+//       };
+//   }
+// };
+// function buyCakes(purchasedCakes) {
+//   return {
+//     type: BUY_CAKE,
+//     payload: purchasedCakes,
+//   };
+// }
+// const store = createStore(reducer);
+// store.dispatch();

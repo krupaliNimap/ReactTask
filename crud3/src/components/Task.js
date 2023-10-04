@@ -35,6 +35,9 @@ const Task = () => {
         <NavLink to="/task/10" className="task-button">
           Task 10
         </NavLink>
+        <NavLink to="/task/11" className="task-button">
+          Task 11
+        </NavLink>
       </div>
       <Outlet />
     </>

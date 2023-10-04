@@ -20,6 +20,7 @@ import Parent10 from "../components/task_10/Parent_10";
 import Child10_1 from "../components/task_10/Child_1";
 import Child10_2 from "../components/task_10/Child_2";
 import Todo from "../components/todo/Todo";
+import Parent_1 from "../components/task_11/redux/Parent_1";
 
 const PrivateRouting = createBrowserRouter([
   {
@@ -105,6 +106,10 @@ const PrivateRouting = createBrowserRouter([
                 element: <Child10_2 />,
               },
             ],
+          },
+          {
+            path: `/task/11`,
+            element: <Parent_1 />,
           },
         ],
       },
