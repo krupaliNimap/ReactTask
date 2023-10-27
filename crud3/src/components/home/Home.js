@@ -8,15 +8,74 @@ import UserForm from "./UserForm";
 import Pagination from "../../shared/Pagination";
 import { Tooltip } from "@mui/material";
 import PieChart from "./PieChart";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllReduxUser } from "../redux/reduxSlice/usersSlice";
 
 const Home = () => {
+  //using redux
+  const dispatch = useDispatch();
+  const { users } = useSelector((state) => state.usersSlice);
+  const columnsRedux = [
+    {
+      name: "ID",
+      selector: (row) => row?.id,
+    },
+    {
+      name: "NAME",
+      selector: (row) => row?.name,
+    },
+    {
+      name: "EMAIL",
+      selector: (row) => (
+        <Tooltip title={<div className="tooltip">{row?.email}</div>}>
+          <span>{row?.email}</span>
+        </Tooltip>
+      ),
+    },
+    {
+      name: "GENDER",
+      selector: (row) => row?.gender,
+    },
+    {
+      name: "STATUS",
+      selector: (row) => row?.status,
+    },
+    {
+      name: "ACTION",
+      selector: "null",
+      cell: (row) => [
+        <img
+          alt="Delete"
+          onClick={() => {
+            setReduxState("redux_state");
+            handleModalOpen(row.id);
+          }}
+          className="delete-update-button"
+          src={require("../../assets/images/DeleteLogo.png")}
+        ></img>,
+        <img
+          alt="Update"
+          className="delete-update-button"
+          src={require("../../assets/images/EditLogo.png")}
+          onClick={() => {
+            setReduxState("redux_state");
+            handleModalOpen(row);
+          }}
+        ></img>,
+      ],
+    },
+  ];
+
+  //using normal fetch
   const [allData, setAllData] = useState([]);
   const [spinnerState, setSpinnerState] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedData, setSelectedData] = useState();
   const [addState, setAddState] = useState(true);
   const [delState, setDelState] = useState(false);
+  const [reduxState, setReduxState] = useState("");
   const handleModalOpen = (data) => {
+    alert(reduxState);
     if (data) {
       setAddState(false);
     }
@@ -25,11 +84,17 @@ const Home = () => {
     }
     setSelectedData(data);
     setModalOpen(true);
+    // if (reduxState === "redux_state") {
+    //   dispatch(setReduxModalOpen(true));
+    // }
   };
   const handleModalClose = () => {
     setAddState(true);
     setDelState(false);
     setModalOpen(false);
+    // if (reduxState === "redux_state") {
+    //   dispatch(setReduxModalOpen(false));
+    // }
   };
   const columns = [
     {
@@ -61,16 +126,22 @@ const Home = () => {
       selector: "null",
       cell: (row) => [
         <img
-          alt="Update"
-          onClick={() => handleModalOpen(row.id)}
+          alt="Delete"
+          onClick={() => {
+            setReduxState("local_state");
+            handleModalOpen(row.id);
+          }}
           className="delete-update-button"
           src={require("../../assets/images/DeleteLogo.png")}
         ></img>,
         <img
-          alt="Delete"
+          alt="Update"
           className="delete-update-button"
           src={require("../../assets/images/EditLogo.png")}
-          onClick={() => handleModalOpen(row)}
+          onClick={() => {
+            setReduxState("local_state");
+            handleModalOpen(row);
+          }}
         ></img>,
       ],
     },
@@ -90,6 +161,7 @@ const Home = () => {
   };
 
   const addUser = (data) => {
+    alert("Local");
     if (!allData.filter((item) => item.email === data.email).length) {
       axios
         .post("http://localhost:8000/user", data)
@@ -107,6 +179,7 @@ const Home = () => {
   };
 
   const updateUser = (id, email, data) => {
+    alert("Local");
     if (
       !allData.filter(
         (item) => (item.email === data.email) & (email !== item.email)
@@ -126,6 +199,7 @@ const Home = () => {
   };
 
   const deleteUser = (id) => {
+    alert("Local");
     setDelState(true);
     handleModalOpen(true);
     axios
@@ -137,6 +211,10 @@ const Home = () => {
     setModalOpen(false);
   };
 
+  // const editReduxUser = () => {
+  //   dispatch(editUserAction(r));
+  // };
+
   //pagination
   const [currPage, setCurrPage] = useState(1);
   const [perPage, setPerPage] = useState(5);
@@ -145,12 +223,23 @@ const Home = () => {
   const endIndex = perPage * currPage;
   const paginateData = allData?.slice(startIndex, endIndex);
 
-  useEffect(() => getAllUserList(), []);
+  const reduxPaginateData = users?.slice(startIndex, endIndex);
+
+  useEffect(() => {
+    getAllUserList();
+    dispatch(getAllReduxUser("/user"));
+  }, []);
 
   return (
     <>
       <div className="div-add-user-button">
-        <button onClick={() => handleModalOpen()} className="add-user-button">
+        <button
+          onClick={() => {
+            setReduxState("local_state");
+            handleModalOpen();
+          }}
+          className="add-user-button"
+        >
           Add
         </button>
       </div>
@@ -184,6 +273,47 @@ const Home = () => {
         )}
         <PieChart data={allData} />
       </div>
+      <p>Crud in Redux</p>
+      <div className="div-add-user-button">
+        <button
+          onClick={() => {
+            setReduxState("redux_state");
+            handleModalOpen();
+          }}
+          className="add-user-button"
+        >
+          Add
+        </button>
+      </div>
+      <div className="table-container">
+        <DataTable
+          fixedHeader
+          fixedHeaderScrollHeight="300px"
+          highlightOnHover
+          responsive
+          progressPending={spinnerState}
+          progressComponent={<Spinner />}
+          columns={columnsRedux}
+          data={reduxPaginateData}
+          onRowClicked={(details) => {
+            console.log("e", details);
+          }}
+        />
+        {users?.length ? (
+          <Pagination
+            count={pageCount}
+            perPage={perPage}
+            setPerPage={setPerPage}
+            currPage={currPage}
+            setCurrPage={setCurrPage}
+            startIndex={startIndex}
+            endIndex={endIndex}
+            data={allData}
+          />
+        ) : (
+          ""
+        )}
+      </div>
       {modalOpen && (
         <UserForm
           modalOpen={modalOpen}
@@ -195,6 +325,7 @@ const Home = () => {
           selectedData={selectedData}
           addState={addState}
           delState={delState}
+          reduxState={reduxState}
         />
       )}
     </>

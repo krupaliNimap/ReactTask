@@ -85,7 +85,7 @@ const Todo = () => {
               }}
             />
             {todoMoreId === item?.id && (
-              <div className="div-delete-update-button">
+              <div className="div-delete-update-button div-modal-delete-button">
                 <img
                   src={deleteIcon}
                   alt="delete-icon"

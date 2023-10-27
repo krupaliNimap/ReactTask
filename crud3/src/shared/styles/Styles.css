@@ -75,12 +75,9 @@
     cursor: pointer;
 }
 .div-delete-update-button{
-    position: absolute;
-    top: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #d33939;
     border-radius: 5px;
 }
 
@@ -295,6 +292,11 @@
 .todo-modal-input{
     position:absolute;
     height: 50px;
+}
+.div-modal-delete-button{
+    background-color: #d33939;
+    position: absolute;
+    top: 25px;
 }
 
 

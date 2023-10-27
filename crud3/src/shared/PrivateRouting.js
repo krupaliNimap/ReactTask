@@ -21,8 +21,19 @@ import Child10_1 from "../components/task_10/Child_1";
 import Child10_2 from "../components/task_10/Child_2";
 import Todo from "../components/todo/Todo";
 import Parent_1 from "../components/task_11/redux/Parent_1";
+import Login from "../components/register/Login";
+import Parent12 from "../components/task_12/Parent12";
+import Register from "./../components/register/Register";
 
 const PrivateRouting = createBrowserRouter([
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
   {
     path: "/",
     element: <SideNav />,
@@ -39,10 +50,10 @@ const PrivateRouting = createBrowserRouter([
         path: "/todo",
         element: <Todo />,
       },
-      {
-        path: "/test",
-        element: <Test />,
-      },
+      // {
+      //   path: "/test",
+      //   element: <Test />,
+      // },
       {
         path: "/task",
         element: <Task />,
@@ -110,6 +121,10 @@ const PrivateRouting = createBrowserRouter([
           {
             path: `/task/11`,
             element: <Parent_1 />,
+          },
+          {
+            path: `/task/12`,
+            element: <Parent12 />,
           },
         ],
       },

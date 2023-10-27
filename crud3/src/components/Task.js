@@ -38,6 +38,9 @@ const Task = () => {
         <NavLink to="/task/11" className="task-button">
           Task 11
         </NavLink>
+        <NavLink to="/task/12" className="task-button">
+          Task 12
+        </NavLink>
       </div>
       <Outlet />
     </>

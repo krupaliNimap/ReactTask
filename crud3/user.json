@@ -15,7 +15,7 @@
       "status": "Active"
     },
     {
-      "name": "Shashi Saini ",
+      "name": "Shashi Saini",
       "email": "shashi_saini_do@johnson.test",
       "gender": "Male",
       "status": "Active",
@@ -146,7 +146,47 @@
       "gender": "Female",
       "status": "Active",
       "id": 3582384
+    },
+    {
+      "name": "krupali atkari",
+      "email": "krupali@nimapinfotech.com",
+      "gender": "Female",
+      "status": "Active",
+      "id": 3582385
     }
   ],
-  "todo": []
+  "todo": [
+    {
+      "name": " \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+      "status": false,
+      "id": 1
+    }
+  ],
+  "registeredUsers": [
+    {
+      "email": "abc@nimapinfotech.com",
+      "password": "abc@123",
+      "id": 1
+    },
+    {
+      "email": "abc@nimapinfotech.com",
+      "password": "abc@123",
+      "id": 2
+    },
+    {
+      "email": "krupaatkari786@gmail.com",
+      "password": "krupa@123",
+      "id": 3
+    },
+    {
+      "email": "abc@gmail.com",
+      "password": "abc@123",
+      "id": 4
+    },
+    {
+      "email": "pranil@gmail.com",
+      "password": "Pranil@123",
+      "id": 5
+    }
+  ]
 }

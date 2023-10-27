@@ -1,0 +1,64 @@
+/* Login Styles */
+.loginContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(46, 35, 83);
+    height: 100vh;
+    font-family: ui-rounded;
+    gap:30px
+    
+}
+.loginBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 25px;
+    height: 60%;
+    width: 40%;
+    border: white solid;
+    border-radius: 50px;
+    gap:40px
+}
+.loginField{
+    display: flex;
+    flex-direction: column;
+    height: 70px;
+    width: 75%;
+}
+.loginField label, .loginField input, .loginField span{
+    padding: 8px 8px 8px 0 ;
+}
+
+.loginField input{
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 15px;
+    font-family: ui-rounded;
+}
+.eyeButton{
+    position: absolute;
+    top: 41px;
+    right: 10px;
+    height: 35%;
+}
+.loginButton{
+    padding: 7px 10px;
+    border-radius: 10px;
+    background-color: #000000;
+    width: 75%;
+    color:white
+}
+.registerLink{
+    color: aquamarine;
+}
+
+/* relative style */
+.relative{
+    position: relative;
+}
+.errorSpan{
+    color:  red;
+}

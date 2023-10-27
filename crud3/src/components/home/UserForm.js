@@ -1,6 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import Modal from "react-responsive-modal";
+import { useDispatch } from "react-redux";
+import {
+  addReduxUser,
+  deleteReduxUser,
+  editReduxUser,
+} from "../redux/reduxSlice/usersSlice";
 
 const UserForm = ({
   modalOpen,
@@ -12,10 +18,9 @@ const UserForm = ({
   selectedData,
   addState,
   delState,
+  reduxState,
 }) => {
-  console.log("selectedData", selectedData);
-  console.log("addState", addState);
-  console.log("delState", delState);
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -27,9 +32,19 @@ const UserForm = ({
     },
   });
   const onSubmit = (data) => {
-    selectedData?.id
-      ? updateUser(selectedData?.id, selectedData?.email, data)
-      : addUser(data);
+    if (reduxState === "local_state") {
+      selectedData?.id
+        ? updateUser(selectedData?.id, selectedData?.email, data)
+        : addUser(data);
+    } else if (reduxState === "redux_state") {
+      selectedData?.id
+        ? dispatch(editReduxUser("/user", selectedData?.id, data))
+        : dispatch(addReduxUser("/user", data));
+    }
+    handleModalClose();
+    // selectedData?.id
+    //   ? updateUser(selectedData?.id, selectedData?.email, data)
+    //   : addUser(data);
   };
   return (
     <>
@@ -40,7 +55,11 @@ const UserForm = ({
             <div className="div-delete-update-button">
               <button
                 className="submit-button"
-                onClick={() => deleteUser(selectedData)}
+                onClick={() => {
+                  if (reduxState === "local_state") deleteUser(selectedData);
+                  else if (reduxState === "redux_state")
+                    dispatch(deleteReduxUser(selectedData));
+                }}
               >
                 Delete
               </button>
