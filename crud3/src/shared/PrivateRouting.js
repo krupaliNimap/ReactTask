@@ -24,6 +24,7 @@ import Parent_1 from "../components/task_11/redux/Parent_1";
 import Login from "../components/register/Login";
 import Parent12 from "../components/task_12/Parent12";
 import Register from "./../components/register/Register";
+import Parent13 from "../components/task_13/Parent13";
 
 const PrivateRouting = createBrowserRouter([
   {
@@ -125,6 +126,10 @@ const PrivateRouting = createBrowserRouter([
           {
             path: `/task/12`,
             element: <Parent12 />,
+          },
+          {
+            path: `/task/13`,
+            element: <Parent13 />,
           },
         ],
       },

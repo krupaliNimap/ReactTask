@@ -169,11 +169,6 @@
       "id": 1
     },
     {
-      "email": "abc@nimapinfotech.com",
-      "password": "abc@123",
-      "id": 2
-    },
-    {
       "email": "krupaatkari786@gmail.com",
       "password": "krupa@123",
       "id": 3
@@ -187,6 +182,17 @@
       "email": "pranil@gmail.com",
       "password": "Pranil@123",
       "id": 5
+    },
+    {
+      "email": "chinmay@nimapinfotech.com",
+      "password": "Chin@12",
+      "id": 6
+    }
+  ],
+  "selectTask":[
+    {
+    "user":"user1",
+    "task":"to sleep"
     }
   ]
 }
