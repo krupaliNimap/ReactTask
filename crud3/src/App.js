@@ -6,12 +6,12 @@ import store from "./components/redux/store";
 
 const App = () => {
   return (
-    <div>
+    <>
       <Provider store={store}>
         <RouterProvider router={PrivateRouting} />
         <Toaster />
       </Provider>
-    </div>
+    </>
   );
 };
 

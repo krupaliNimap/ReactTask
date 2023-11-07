@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <Fragment>
+    <>
       <div className="sidebar-container">
         <img
           className="react-image"
@@ -29,7 +29,7 @@ const Sidebar = () => {
           </NavLink>
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 

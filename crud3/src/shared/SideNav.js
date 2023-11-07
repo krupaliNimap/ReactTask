@@ -11,9 +11,7 @@ const SideNav = () => {
         <Sidebar />
         <div className="topbar">
           <Navbar />
-          <div className="container">
             <Outlet />
-          </div>
         </div>
       </div>
     </>

@@ -19,7 +19,7 @@ const reducer = (state, action) => {
 const Parent10 = () => {
   const [counter, dispatch] = useReducer(reducer, initialState);
   return (
-    <div>
+    <>
       <p>useReducer Example</p>
       <div className="taskbutton-container">
         <NavLink to="/task/10/1" className="task-button">
@@ -30,7 +30,7 @@ const Parent10 = () => {
         </NavLink>
       </div>
       <Outlet />
-    </div>
+    </>
   );
 };
 

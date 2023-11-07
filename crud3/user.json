@@ -189,10 +189,9 @@
       "id": 6
     }
   ],
-  "selectTask":[
+  "selectTask": [
     {
-    "user":"user1",
-    "task":"to sleep"
+      "user1": [{ "task": "to sleep", "id": 0 }]
     }
   ]
 }

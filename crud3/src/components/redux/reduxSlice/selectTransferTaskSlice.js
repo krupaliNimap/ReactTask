@@ -1,7 +1,7 @@
 import { toast } from "react-hot-toast";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { publicGet } from "../../services/publicRequest";
-const getAllSelectTask = createAsyncThunk("get/allSelectTask", async () => {
+import { publicGet, publicPost } from "../../services/publicRequest";
+export const getAllSelectTask = createAsyncThunk("get/allSelectTask", async () => {
   try {
     const res = await publicGet("/selectTask");
     console.log("res", res);
@@ -13,6 +13,11 @@ const getAllSelectTask = createAsyncThunk("get/allSelectTask", async () => {
   }
 });
 
+export const addTask = createAsyncThunk("post/addTask",async(data)=>{
+  const res = await publicPost("/selectTask",data)
+  console.log("res",res)
+})
+
 const initialState = {
   allSelectTask: [],
   loading: false,
@@ -22,14 +27,17 @@ const selectTaskSlice = createSlice({
   name: "slectTask",
   initialState,
   extraReducers: {
-    [getAllSelectTask.pending]: (state, payload) => {
+    [getAllSelectTask.pending]: (state, action) => {
+      console.log("pending")
       state.loading = true;
     },
-    [getAllSelectTask.fulfilled]: (state, payload) => {
-      state.allSelectTask = payload.data;
+    [getAllSelectTask.fulfilled]: (state, action) => {
+      console.log("fulfilled")
+      state.allSelectTask = action.payload.data;
       state.loading = false;
     },
-    [getAllSelectTask.rejected]: (state, payload) => {
+    [getAllSelectTask.rejected]: (state, action) => {
+      console.log("rejected")
       state.loading = false;
     },
   },
