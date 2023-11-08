@@ -1,44 +1,45 @@
 import { toast } from "react-hot-toast";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { publicGet, publicPost } from "../../services/publicRequest";
-export const getAllSelectTask = createAsyncThunk("get/allSelectTask", async () => {
+import { publicGet, publicPost, publicPut } from "../../services/publicRequest";
+
+export const getAllUser = createAsyncThunk("get/allUser", async () => {
+  const res = await publicGet("/selectTask");
+  return {
+    data: res.data || [],
+  };
+});
+
+export const addSelectTaskUser = createAsyncThunk(
+  "add/selectTaskUser",
+  async (user) => {
+    try {
+      const res = await publicPost("/selectTask", user);
+    } catch (err) {
+      toast.error("Oops, Try again");
+    }
+  }
+);
+
+export const addTask = createAsyncThunk("post/addTask", async ({data,id},{dispatch}) => {
   try {
-    const res = await publicGet("/selectTask");
-    console.log("res", res);
-    return {
-      data: res.data || [],
-    };
+    const res = await publicPut(`/selectTask`, id,data);
+    dispatch(getAllUser())
   } catch (err) {
-    toast.error("Something went wrong", err);
+    toast.error("Oops, Try again");
   }
 });
 
-export const addTask = createAsyncThunk("post/addTask",async(data)=>{
-  const res = await publicPost("/selectTask",data)
-  console.log("res",res)
-})
-
 const initialState = {
-  allSelectTask: [],
+  allUser: [],
   loading: false,
 };
 
 const selectTaskSlice = createSlice({
-  name: "slectTask",
+  name: "selectTask",
   initialState,
   extraReducers: {
-    [getAllSelectTask.pending]: (state, action) => {
-      console.log("pending")
-      state.loading = true;
-    },
-    [getAllSelectTask.fulfilled]: (state, action) => {
-      console.log("fulfilled")
-      state.allSelectTask = action.payload.data;
-      state.loading = false;
-    },
-    [getAllSelectTask.rejected]: (state, action) => {
-      console.log("rejected")
-      state.loading = false;
+    [getAllUser.fulfilled]: (state, action) => {
+      state.allUser = action.payload.data;
     },
   },
 });
