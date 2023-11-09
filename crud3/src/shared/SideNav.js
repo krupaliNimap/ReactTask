@@ -11,7 +11,10 @@ const SideNav = () => {
         <Sidebar />
         <div className="topbar">
           <Navbar />
+          <div style={{overflow:"scroll", maxHeight:"fit-content"}}>
+
             <Outlet />
+          </div>
         </div>
       </div>
     </>
