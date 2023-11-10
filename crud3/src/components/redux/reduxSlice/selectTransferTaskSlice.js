@@ -22,10 +22,10 @@ export const addSelectTaskUser = createAsyncThunk(
 
 export const transferSelectedTasks = createAsyncThunk(
   "/transferTask",
-  async(data,{dispatch}) => {
+  async({id,data},{dispatch}) => {
     try{
       console.log('data', data)
-      // const res = await publicPut("/selectTask", data);
+      const res = await publicPut(`/selectTask`,id,data);
       // dispatch(getAllUser())
       toast.success("Successsfully Transferred")
     }catch(err){

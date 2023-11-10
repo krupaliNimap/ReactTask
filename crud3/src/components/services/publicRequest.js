@@ -13,6 +13,7 @@ export const publicPost = (endPoints, data) => {
 };
 
 export const publicPut = (endPoints, id, data) => {
+  console.log('id', id)
   return publicRequest.put(`${endPoints}/${id}`, data);
 };
 

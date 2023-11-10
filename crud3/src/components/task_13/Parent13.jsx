@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addTask,
   getAllUser,
+  transferSelectedTasks,
 } from "../redux/reduxSlice/selectTransferTaskSlice";
 import styles from "./selectTask.module.scss";
 import { addSelectTaskUser } from "./../redux/reduxSlice/selectTransferTaskSlice";
@@ -21,38 +22,51 @@ const Parent13 = () => {
   const [checkedUser, setCheckedUser] = useState({
     userId: null,
     checkedTaskId: [],
-    checkedTask:[]
+    checkedTask: [],
   });
   const taskTransfer = () => {
-
-    const appendTask = allUser?.[checkedUser?.userId-1]?.task?.reduce(
+    const appendTask = allUser?.[checkedUser?.userId - 1]?.task?.reduce(
       (acc, item, index) => {
         if (checkedUser?.checkedTaskId?.includes(index)) {
           acc.push(item);
         }
-        console.log('acc', acc)
         return acc;
       },
       []
     );
-    const deleteTask = allUser?.[checkedUser?.userId-1]?.task?.reduce(
-      (acc,item,index) => {
-        if(checkedUser?.checkedTaskId?.includes(index)){
-          const a = allUser?.[checkedUser?.userId-1]?.task.findIndex(x => x === index);
-          const x = allUser?.[checkedUser?.userId-1]?.task.splice(a , 1);
-          console.log('x', x)
+    checkedUser?.checkedTaskId.sort();
+    const deleteTask = allUser?.[checkedUser?.userId - 1]?.task?.reduce(
+      (acc, item, index) => {
+        if (!checkedUser?.checkedTaskId?.includes(index)) {
+          acc.push(item);
         }
-      }
-    )
-    const tempTo = {
-      ...allUser,
-      [checkedUser?.userId]: {
-        ...allUser?.[checkedUser?.userId],
-        task: [...allUser?.[checkedUser?.userId]?.task,appendTask],
+        return acc;
       },
+      []
+    );
+    // const tempTo = {
+    //   ...allUser,
+    //   [checkedUser?.userId-1]: {
+    //     ...allUser?.[checkedUser?.userId-1],
+    //     task: deleteTask,
+    //   },
+    //   [secondUser-1]:{
+    //     ...allUser?.[secondUser-1],
+    //     task: [...allUser?.[secondUser-1].task, ...appendTask]
+    //   }
+    // };
+    const tempTo = {
+      ...allUser?.[secondUser - 1],
+      task: [...allUser?.[secondUser - 1].task, ...appendTask],
     };
-    console.log('addTask1,tempTo', appendTask,tempTo,checkedUser?.checkedTaskId)
-    console.log('checkedUser', checkedUser)
+    const tempFrom = {
+      ...allUser?.[checkedUser?.userId - 1],
+      task: deleteTask,
+    };
+    console.log('tempTo,tempFrom,secondUser,checkedUser.userId', tempTo,tempFrom,secondUser,checkedUser.userId)
+    // console.log('tempTo,tempFrom', tempTo,tempFrom,allUser?.[secondUser-1].id,allUser?.[checkedUser?.userId - 1].id)
+    dispatch(transferSelectedTasks({data:tempTo,id:secondUser}))
+    dispatch(transferSelectedTasks({data:tempFrom,id:checkedUser.userId}));
   };
   const addTaskFun = () => {
     const temp = {
@@ -69,25 +83,29 @@ const Parent13 = () => {
         ...checkedUser,
         userId,
         checkedTaskId: [...checkedUser.checkedTaskId, taskId],
-        checkedTask: [...checkedUser.checkedTask, task]
+        checkedTask: [...checkedUser.checkedTask, task],
       });
     } else {
       // arr.filter(item => item !== value)
-      checkedUser.checkedTaskId = checkedUser.checkedTaskId.filter(item => item!==taskId);
+      checkedUser.checkedTaskId = checkedUser.checkedTaskId.filter(
+        (item) => item !== taskId
+      );
       // checkedUser.checkedTask.delete(task)
-      checkedUser.checkedTask = checkedUser.checkedTask.filter(item => item!==task);
+      checkedUser.checkedTask = checkedUser.checkedTask.filter(
+        (item) => item !== task
+      );
       checkedUser.checkedTaskId.length === 0
         ? setCheckedUser({
             ...checkedUser,
             userId: null,
             checkedTaskId: checkedUser.checkedTaskId,
-            checkedTask: checkedUser.checkedTask
+            checkedTask: checkedUser.checkedTask,
           })
         : setCheckedUser({
             ...checkedUser,
             userId,
             checkedTaskId: checkedUser.checkedTaskId,
-            checkedTask: checkedUser.checkedTask
+            checkedTask: checkedUser.checkedTask,
           });
     }
     setChecked({
