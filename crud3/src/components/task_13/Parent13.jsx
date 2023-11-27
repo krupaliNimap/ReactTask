@@ -67,6 +67,11 @@ const Parent13 = () => {
     // console.log('tempTo,tempFrom', tempTo,tempFrom,allUser?.[secondUser-1].id,allUser?.[checkedUser?.userId - 1].id)
     dispatch(transferSelectedTasks({data:tempTo,id:secondUser}))
     dispatch(transferSelectedTasks({data:tempFrom,id:checkedUser.userId}));
+    setCheckedUser({
+      userId: null,
+      checkedTaskId: [],
+      checkedTask: [],
+    });
   };
   const addTaskFun = () => {
     const temp = {
@@ -116,9 +121,9 @@ const Parent13 = () => {
       },
     });
   }
-  useEffect(() => {
-    dispatch(getAllUser());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getAllUser());
+  // }, []);
   useEffect(() => {
     let checkedObject = allUser?.reduce((acc, item) => {
       return {
@@ -128,6 +133,7 @@ const Parent13 = () => {
         }, {}),
       };
     }, {});
+    dispatch(getAllUser());
     setChecked(checkedObject);
   }, [allUser]);
   return (

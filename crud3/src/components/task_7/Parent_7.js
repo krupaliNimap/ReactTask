@@ -6,17 +6,15 @@ function ThrottledTextField() {
   const [isThrottled, setIsThrottled] = useState(false);
 
   const handleInputChange = (e) => {
-    // const value = e.target.value;
     setInputValue(e.target.value);
 
     if (!isThrottled) {
       setIsThrottled(true);
 
       setTimeout(() => {
-        // Process the input value after the throttle delay
         setIsThrottled(false);
         setProcessedValue(e.target.value);
-      }, 1000); // Adjust the throttle interval as needed (e.g., 1000 milliseconds)
+      }, 1000);
     }
   };
 

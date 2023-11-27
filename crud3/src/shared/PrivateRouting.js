@@ -1,30 +1,33 @@
 import React from "react";
+import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import SideNav from "./SideNav";
-import Home from "../components/home/Home";
-import About from "../components/about/About";
-import Task from "../components/Task";
-import Parent1 from "../components/task_1/Parent_1";
-import Parent2 from "../components/task_2/Parent_2";
-import Parent3 from "../components/task_3/Parent_3";
-import Parent4 from "../components/task_4/Parent_4";
-import Parent5 from "../components/task_5/Parent_5";
-import Parent6 from "../components/task_6/Parent_6";
-import Parent7 from "../components/task_7/Parent_7";
-import Parent8 from "../components/task_8/Parent_8";
-import Parent9 from "../components/task_9/Parent_9";
-import Child1 from "../components/task_9/Child_1";
-import Child2 from "../components/task_9/Child_2";
-import Test from "../components/test/test";
-import Parent10 from "../components/task_10/Parent_10";
-import Child10_1 from "../components/task_10/Child_1";
-import Child10_2 from "../components/task_10/Child_2";
-import Todo from "../components/todo/Todo";
-import Parent_1 from "../components/task_11/redux/Parent_1";
-import Login from "../components/register/Login";
-import Parent12 from "../components/task_12/Parent12";
-import Register from "./../components/register/Register";
-import Parent13 from "../components/task_13/Parent13";
+const SideNav = lazy(() => import("./SideNav"));
+const Home = lazy(() => import("../components/home/Home"));
+const About = lazy(() => import("../components/about/About"));
+const Parent1 = lazy(() => import("../components/task_1/Parent_1"));
+const Parent2 = lazy(() => import("../components/task_2/Parent_2"));
+const Parent3 = lazy(() => import("../components/task_3/Parent_3"));
+const Parent4 = lazy(() => import("../components/task_4/Parent_4"));
+const Parent5 = lazy(() => import("../components/task_5/Parent_5"));
+const Parent6 = lazy(() => import("../components/task_6/Parent_6"));
+const Parent7 = lazy(() => import("../components/task_7/Parent_7"));
+const Parent8 = lazy(() => import("../components/task_8/Parent_8"));
+const Parent9 = lazy(() => import("../components/task_9/Parent_9"));
+const Child1 = lazy(() => import("../components/task_9/Child_1"));
+const Child2 = lazy(() => import("../components/task_9/Child_2"));
+const Test = lazy(() => import("../components/test/Test"));
+const Parent10 = lazy(() => import("../components/task_10/Parent_10"));
+const Child10_1 = lazy(() => import("../components/task_10/Child_1"));
+const Child10_2 = lazy(() => import("../components/task_10/Child_2"));
+const Todo = lazy(() => import("../components/todo/Todo"));
+const Parent_1 = lazy(() => import("../components/task_11/redux/Parent_1"));
+const Login = lazy(() => import("../components/register/Login"));
+const Parent12 = lazy(() => import("../components/task_12/Parent12"));
+const Register = lazy(() => import("./../components/register/Register"));
+const Parent13 = lazy(() => import("../components/task_13/Parent13"));
+const Task = lazy(() => import("./../components/Task"));
+const Parent14 = lazy(() => import("../components/task_14/Parent14"));
+const Parent15 = lazy(() => import("../components/task_15/Parent15"));
 
 const PrivateRouting = createBrowserRouter([
   {
@@ -131,7 +134,19 @@ const PrivateRouting = createBrowserRouter([
             path: `/task/13`,
             element: <Parent13 />,
           },
+          {
+            path: `/task/14`,
+            element: <Parent14 />,
+          },
+          {
+            path: `/task/15`,
+            element: <Parent15 />,
+          },
         ],
+      },
+      {
+        path: "/test",
+        element: <Test />,
       },
     ],
   },

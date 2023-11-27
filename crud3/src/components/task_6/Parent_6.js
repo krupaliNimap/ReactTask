@@ -26,6 +26,7 @@ const Parent6 = () => {
   }, [counter]);
   return (
     <div>
+      
       <p>Debouncing Example</p>
       <p>
         <input onChange={(e) => setInputValue(e.target.value)}></input>

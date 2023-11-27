@@ -5,6 +5,10 @@
     overflow: hidden;
     display: flex;
 }
+.maindiv{
+    overflow: auto;
+    height: calc(100vh - 70px);
+}
 .topbar{
     width:calc(100vw - 200px)
 }

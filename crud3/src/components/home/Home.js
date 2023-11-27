@@ -273,47 +273,6 @@ const Home = () => {
         )}
         <PieChart data={allData} />
       </div>
-      <p>Crud in Redux</p>
-      <div className="div-add-user-button">
-        <button
-          onClick={() => {
-            setReduxState("redux_state");
-            handleModalOpen();
-          }}
-          className="add-user-button"
-        >
-          Add
-        </button>
-      </div>
-      <div className="table-container">
-        <DataTable
-          fixedHeader
-          fixedHeaderScrollHeight="300px"
-          highlightOnHover
-          responsive
-          progressPending={spinnerState}
-          progressComponent={<Spinner />}
-          columns={columnsRedux}
-          data={reduxPaginateData}
-          onRowClicked={(details) => {
-            console.log("e", details);
-          }}
-        />
-        {users?.length ? (
-          <Pagination
-            count={pageCount}
-            perPage={perPage}
-            setPerPage={setPerPage}
-            currPage={currPage}
-            setCurrPage={setCurrPage}
-            startIndex={startIndex}
-            endIndex={endIndex}
-            data={allData}
-          />
-        ) : (
-          ""
-        )}
-      </div>
       {modalOpen && (
         <UserForm
           modalOpen={modalOpen}
